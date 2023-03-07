@@ -8,7 +8,7 @@
 #' @examples
 #' x <- file_locator()
 #' 
-#' @author Abhijeet Mishra
+#' @author Abhijeet Mishra 
 
 file_locator <- function(source){
   if(!dir.exists(source)) stop("Invalid source folder. Provide path to model folder.")
