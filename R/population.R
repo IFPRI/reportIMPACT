@@ -17,6 +17,8 @@ population <- function(gdx){
   df <- var %>%
     group_by(YRS) %>%
     summarise(value = sum(value))
+  df$identifier <- gsub(pattern = ".gdx",replacement = "",x = basename(gdx))
+  df$source <- "IMPACT"
   out <- as.data.frame(df)
   return(out)
 }
