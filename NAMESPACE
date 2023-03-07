@@ -2,3 +2,4 @@
 
 export(file_locator)
 export(population)
+import(dplyr)
