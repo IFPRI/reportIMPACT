@@ -2,7 +2,7 @@
 #'
 #' @param source Path to IMPACT model run
 #'
-#' @return directory
+#' @return directory 
 #' @export
 #'
 #' @examples
