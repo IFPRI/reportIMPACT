@@ -12,13 +12,15 @@
 #' @author Abhijeet Mishra
 
 population <- function(gdx){
-  var <- gdxrrw::rgdx.param(gdxName = gdx, "p_POP_opt")
+  var <- gdxrrw::rgdx.param(gdxName = gdx, "PopX0")
   colnames(var)[length(colnames(var))] <- "value"
   df <- var %>%
     group_by(YRS) %>%
     summarise(value = sum(value))
   df$identifier <- gsub(pattern = ".gdx",replacement = "",x = basename(gdx))
   df$source <- "IMPACT"
+  df$variable <- "Population"
+  df$unit <- "million capita"
   out <- as.data.frame(df)
   return(out)
 }
