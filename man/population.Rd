@@ -16,7 +16,7 @@ GLO population
 Population
 }
 \examples{
-population_glo <- population(gdx)
+\dontrun{x <- population(gdx)}
 }
 \author{
 Abhijeet Mishra
