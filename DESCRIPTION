@@ -1,6 +1,6 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: 
     person("Abhijeet", "Mishra",  , "A.Mishra@cgiar.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8287-9922"))
@@ -13,6 +13,6 @@ RoxygenNote: 7.2.3
 Imports: 
     dplyr (>= 1.1.0),
     gdxrrw (>= 1.0.10),
-    rlang (>= 1.0.6)
-Suggests:
-    DOORMAT (>= 1.0.0)
+    rlang (>= 1.1.0),
+    DOORMAT (>= 2.1.0),
+    data.table (>= 1.14.8)
