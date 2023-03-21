@@ -1,4 +1,4 @@
-#' Population
+#' reportPopulation
 #'
 #' @param gdx final GDX from an IMPACT run
 #'
@@ -9,10 +9,14 @@
 #' @importFrom rlang .data
 #' @author Abhijeet Mishra
 #' @examples
-#' \dontrun{x <- population(gdx)}
+#' \dontrun{x <- reportPopulation(gdx)}
 #' @export
 
-population <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "POPX0"))
+reportPopulation <- function(gdx){
+  df <- population(gdx = gdx)
+  df$indicator <- "Population"
+
+  df <- clean_description(df)
+
   return(df)
 }

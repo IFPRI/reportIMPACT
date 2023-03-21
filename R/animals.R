@@ -1,18 +1,18 @@
-#' Population
+#' animals
 #'
 #' @param gdx final GDX from an IMPACT run
 #'
-#' @return GLO population
+#' @return GLO animals
 #'
 #' @import gdxrrw DOORMAT
 #' @importFrom dplyr group_by summarise %>%
 #' @importFrom rlang .data
 #' @author Abhijeet Mishra
 #' @examples
-#' \dontrun{x <- population(gdx)}
+#' \dontrun{x <- animals(gdx)}
 #' @export
 
-population <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "POPX0"))
+animals <- function(gdx){
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "ANMLNUMCTYX0"))
   return(df)
 }
