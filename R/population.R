@@ -4,9 +4,7 @@
 #'
 #' @return GLO population
 #'
-#' @import gdxrrw DOORMAT
-#' @importFrom dplyr group_by summarise %>%
-#' @importFrom rlang .data
+#' @import gamstransfer DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- population(gdx)}

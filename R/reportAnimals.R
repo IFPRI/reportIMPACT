@@ -4,9 +4,7 @@
 #'
 #' @return GLO Animals
 #'
-#' @import gdxrrw DOORMAT
-#' @importFrom dplyr group_by summarise %>%
-#' @importFrom rlang .data
+#' @import gamstransfer DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportAnimals(gdx)}
@@ -21,7 +19,6 @@ reportAnimals <- function(gdx){
   # lvsys is same across all set elements, pick any one
 
   df <- df[df$lvsys %in% unique(df$lvsys)[1],]
-  df$indicator <- paste(df$indicator,df$groups,df$long_name,sep = "|")
 
   return(df)
 }

@@ -20,9 +20,10 @@ getReport <- function(gdx,
   t <- Sys.time()
 
   out_list <- list()
-  cols <- colnames(reportPopulation(gdx))
+  cols <- suppressMessages(colnames(reportPopulation(gdx)))
   out_list[["Population"]] <- reportPopulation(gdx)
   out_list[["Animal Numbers"]] <- reportAnimals(gdx)
+  out_list[["Export quantity"]] <- reportExport(gdx)
 
   out <- rbindlist(out_list,use.names=TRUE, fill=TRUE)
   out <- out[,cols,with = FALSE]
@@ -31,6 +32,7 @@ getReport <- function(gdx,
   if (export){
     export_dir <- paste0(dirname(gdx), "/", gsub(pattern = ".gdx", replacement = "", x = basename(gdx)),".rds")
     saveRDS(object = out, file = export_dir)
+    message("Results exported to ", export_dir,"\n")
   } else return(out)
   message("Finished post processing in ",round(difftime(Sys.time(), t, units='mins'),1), " minutes")
 }

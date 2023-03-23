@@ -1,18 +1,18 @@
-#' reportPopulation
+#' reportCropArea
 #'
 #' @param gdx final GDX from an IMPACT run
 #'
-#' @return GLO population
+#' @return GLO CropArea
 #'
 #' @import gamstransfer DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
-#' \dontrun{x <- reportPopulation(gdx)}
+#' \dontrun{x <- reportCropArea(gdx)}
 #' @export
 
-reportPopulation <- function(gdx){
-  df <- population(gdx = gdx)
-  df$indicator <- "Population"
+reportCropArea <- function(gdx){
+  df <- cropArea(gdx = gdx)
+  df$indicator <- "Crop area"
 
   df <- clean_description(df)
 

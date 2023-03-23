@@ -1,18 +1,18 @@
-#' reportPopulation
+#' reportExport
 #'
 #' @param gdx final GDX from an IMPACT run
 #'
-#' @return GLO population
+#' @return GLO export
 #'
 #' @import gamstransfer DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
-#' \dontrun{x <- reportPopulation(gdx)}
+#' \dontrun{x <- reportexport(gdx)}
 #' @export
 
-reportPopulation <- function(gdx){
-  df <- population(gdx = gdx)
-  df$indicator <- "Population"
+reportExport <- function(gdx){
+  df <- export(gdx = gdx)
+  df$indicator <- "Export"
 
   df <- clean_description(df)
 

@@ -11,8 +11,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    dplyr (>= 1.1.0),
-    gdxrrw (>= 1.0.10),
-    rlang (>= 1.1.0),
+    gamstransfer (>= 1.6),
     DOORMAT (>= 2.1.0),
-    data.table (>= 1.14.8)
+    data.table (>= 1.14.8),
+    magclass (>= 6.8.0)
