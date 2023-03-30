@@ -14,4 +14,5 @@ Imports:
     gamstransfer (>= 1.6),
     DOORMAT (>= 2.1.0),
     data.table (>= 1.14.8),
-    magclass (>= 6.8.0)
+    magclass (>= 6.8.0),
+    dplyr (>= 1.1.1)

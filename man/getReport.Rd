@@ -4,7 +4,7 @@
 \alias{getReport}
 \title{getReport}
 \usage{
-getReport(gdx, prep_flag = "Default", export = TRUE)
+getReport(gdx, prep_flag = "Default", export = TRUE, base_year = 2005)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
@@ -12,6 +12,8 @@ getReport(gdx, prep_flag = "Default", export = TRUE)
 \item{prep_flag}{Who processed data}
 
 \item{export}{if RDS file should be written}
+
+\item{base_year}{Base year on which relative index can be calculated}
 }
 \value{
 Full data output
