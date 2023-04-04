@@ -42,69 +42,98 @@ getReport <- function(gdx,
     return(append(base_list,dummy))
   }
 
+  # Dummy text
+  reading <- "Reading "
+  trail <- " ........"
+
   # Population ----
   name = "Population"
+  message(reading,name,trail)
   out_list[[name]]            <- reportPopulation(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Household Population ----
   name = "Household Population"
+  message(reading,name,trail)
   out_list[[name]]            <- reportHouseholdPopulation(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Animal Numbers ----
   name = "Animal Numbers"
+  message(reading,name,trail)
   out_list[[name]]            <- reportAnimals(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Export Quantity ----
   name = "Export quantity"
+  message(reading,name,trail)
   out_list[[name]]            <- reportExport(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Net Trade ----
   name = "Net Trade"
+  message(reading,name,trail)
   out_list[[name]]            <- reportNetTrade(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Food Availability ----
   name = "Food Availability"
+  message(reading,name,trail)
   out_list[[name]]            <- reportFoodAvailability(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Crop Area ----
   name = "Crop Area"
+  message(reading,name,trail)
   out_list[[name]]            <- reportCropArea(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # GDP ----
   name = "GDP"
+  message(reading,name,trail)
   out_list[[name]]            <- reportGDP(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Household Income ----
   name = "Household Income"
+  message(reading,name,trail)
   out_list[[name]]            <- reportHouseholdIncome(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Hunger Risk ----
   name = "Hunger Risk"
+  message(reading,name,trail)
   out_list[[name]]            <- reportHungerRisk(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Hunger Risk ----
   name = "Biofuel feedstock"
+  message(reading,name,trail)
   out_list[[name]]            <- reportBiofuelFeedstock(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Demand ----
   name = "Demand"
+  message(reading,name,trail)
   out_list[[name]]            <- reportDemand(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Household Demand ----
   name = "Household demand"
+  message(reading,name,trail)
   out_list[[name]]            <- reportHouseholdDemand(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Production ----
+  name = "Production"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportProduction(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Yields ----
+  name = "Yields"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportYields(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
 
@@ -118,7 +147,7 @@ getReport <- function(gdx,
   if (export){
     export_dir <- paste0(dirname(gdx), "/", gsub(pattern = ".gdx", replacement = "", x = basename(gdx)),".rds")
     saveRDS(object = out, file = export_dir)
-    message("Results exported to ", export_dir,"\n")
+    message("\nResults exported to ", export_dir)
   } else return(out)
-  message("\nFinished post processing in ",round(difftime(Sys.time(), t, units='mins'),1), " minutes")
+  message("\nFinished post processing in ",round(difftime(Sys.time(), t, units='sec'),1), " seconds")
 }
