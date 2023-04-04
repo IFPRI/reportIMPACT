@@ -6,7 +6,7 @@
 #'
 #' @import gamstransfer DOORMAT
 #' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where
-#' @importFrom dplyr group_by summarise %>%
+#' @importFrom dplyr group_by summarise %>% across all_of
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- Yields(gdx)}
@@ -14,7 +14,7 @@
 
 yields <- function(gdx){
 
-  setNames <- getSets <- NULL
+  setNames <- getSets <- value <- NULL
 
   message(".....Calculating FPU level area")
   area_fpu <- readGDX(gdx = gdx,name = "AREAX0")[["data"]]
@@ -48,7 +48,7 @@ yields <- function(gdx){
 
   production_cty_agg <- production_cty %>%
     group_by(across(all_of(c("yrs","j","fctr","cty")))) %>%
-    summarise(value = sum(.data$value,na.rm = TRUE))
+    summarise(value = sum(value,na.rm = TRUE))
 
   production_cty_agg$description <- "Solution crop area (000 mt)"
   production_cty_agg$model <- "IMPACT"
