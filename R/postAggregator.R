@@ -33,7 +33,7 @@ postAggregator <- function(df, gdx, col="indicator", type="crop_area"){
 
     temp <- df %>%
       group_by(across(all_of(cols))) %>%
-      summarise(value = sum(value))
+      summarise(value = sum(value,na.rm = TRUE))
 
     temp[,agg_col] <- NA
     temp[,col] <- core_indicator
