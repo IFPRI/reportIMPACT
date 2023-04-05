@@ -5,8 +5,8 @@
 #' @return GLO Yields
 #'
 #' @import gamstransfer DOORMAT
-#' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where
 #' @importFrom dplyr group_by summarise %>% across all_of
+#' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where getNames
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- Yields(gdx)}
@@ -28,7 +28,7 @@ yields <- function(gdx){
   message(".....Calculating FPU level production")
   production_fpu <- area_fpu_mag * yld_fpu_mag
 
-  if(length((where(is.na(area_fpu_mag) & !(is.na(production_fpu)))$true)$years)) {
+  if(length((magclass::where(is.na(area_fpu_mag) & !(is.na(production_fpu)))$true)$years)) {
     stop("  Likely incorrect calculation in FPU level production calculation.
          Production exists with no area information in some FPU(s).
          Aborting.")
@@ -68,11 +68,11 @@ yields <- function(gdx){
   mag_crop_area_agg <- collapseNames(as.magpie(crop_area_agg,spatial="region"))
 
   message(".....Calculating country level aggregated yield")
-  yld_agg <- mag_prod_agg / mag_crop_area_agg
+  yld_agg <- mag_prod_agg / mag_crop_area_agg[,,getNames(mag_prod_agg)] # Kick out traded-non traded combined
 
   yld_df <- as.data.frame(yld_agg)[,-1]
 
-  colnames(yld_df) <- c(getSets(mag_prod_agg),"value")
+  colnames(yld_df) <- c(getSets(yld_agg),"value")
 
   yld_df$description <- "Aggregated Yield (mt per ha)"
   yld_df$model <- "IMPACT"

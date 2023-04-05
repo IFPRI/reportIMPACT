@@ -16,5 +16,7 @@ reportCropArea <- function(gdx){
 
   df <- clean_description(df)
 
+  df <- postAggregator(df = df,gdx = gdx)
+
   return(df)
 }

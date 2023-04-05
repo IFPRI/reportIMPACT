@@ -28,7 +28,7 @@ getReport <- function(gdx,
   additional_calculation <- function(base_list,
                                      name,
                                      base_year) {
-    stopifnot(is.list(out_list))
+    stopifnot(is.list(base_list))
     stopifnot(is.character(name))
     stopifnot(is.numeric(base_year))
 
