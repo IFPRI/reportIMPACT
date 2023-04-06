@@ -6,7 +6,7 @@
 #'
 #' @import gamstransfer DOORMAT
 #' @importFrom dplyr group_by summarise %>% across all_of
-#' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where getNames
+#' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where getNames getItems
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- Yields(gdx)}
