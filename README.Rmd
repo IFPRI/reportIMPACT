@@ -23,20 +23,18 @@ The goal of `reportIMPACT` is to be able to generate some basic outputs from an 
 
 ## Installation
 
+Package `DOORMAT` is required for proper functioning of the `reportIMPACT` package. It can be installed with
+
+``` r
+# install.packages("devtools")
+devtools::install_github("IFPRI/DOORMAT")
+```
+
 You can install the latest version of reportIMPACT from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("IFPRI/reportIMPACT")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
-library(reportIMPACT)
-## basic example code
 ```
 
 ## Questions / Problems

@@ -15,21 +15,20 @@ of basic indicators from an IMPACT run.
 
 ## Installation
 
+Package `DOORMAT` is required for proper functioning of the
+`reportIMPACT` package. It can be installed with
+
+``` r
+# install.packages("devtools")
+devtools::install_github("IFPRI/DOORMAT")
+```
+
 You can install the latest version of reportIMPACT from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("IFPRI/reportIMPACT")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
-
-``` r
-library(reportIMPACT)
-## basic example code
 ```
 
 ## Questions / Problems
