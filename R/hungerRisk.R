@@ -4,7 +4,7 @@
 #'
 #' @return GLO hungerRisk
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- hungerRisk(gdx)}

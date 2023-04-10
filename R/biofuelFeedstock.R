@@ -4,7 +4,7 @@
 #'
 #' @return GLO biofuelFeedstock
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- biofuelFeedstock(gdx)}

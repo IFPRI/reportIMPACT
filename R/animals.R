@@ -4,7 +4,7 @@
 #'
 #' @return GLO animals
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- animals(gdx)}

@@ -4,7 +4,7 @@
 #'
 #' @return GLO householdPopulation
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- householdPopulation(gdx)}

@@ -4,7 +4,7 @@
 #'
 #' @return GLO FoodAvailability
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportFoodAvailability(gdx)}

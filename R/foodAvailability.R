@@ -4,7 +4,7 @@
 #'
 #' @return GLO FoodAvailability
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @importFrom magclass as.magpie setNames getSets as.data.frame
 #' @author Abhijeet Mishra
 #' @examples

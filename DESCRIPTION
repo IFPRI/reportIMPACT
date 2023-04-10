@@ -13,6 +13,7 @@ RoxygenNote: 7.2.3
 Imports: 
     data.table (>= 1.14.8),
     magclass (>= 6.8.0),
-    dplyr (>= 1.1.1)
+    dplyr (>= 1.1.1),
+    DOORMAT (>= 2.3.0)
 Remotes:
-    IFPRI/DOORMAT (>= 2.3.0)
+    github::IFPRI/DOORMAT

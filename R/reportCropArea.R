@@ -4,7 +4,7 @@
 #'
 #' @return GLO CropArea
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportCropArea(gdx)}

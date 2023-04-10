@@ -7,7 +7,7 @@
 #'
 #' @return Full data output
 #'
-#' @import DOORMAT
+#' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @importFrom data.table rbindlist
 #' @author Abhijeet Mishra
 #' @examples
