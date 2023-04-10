@@ -4,7 +4,7 @@
 #'
 #' @return GLO Animals
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportAnimals(gdx)}

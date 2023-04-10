@@ -4,7 +4,7 @@
 #'
 #' @return GLO biofuelFeedstock
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- biofuelFeedstock(gdx)}

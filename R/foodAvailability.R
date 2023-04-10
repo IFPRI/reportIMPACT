@@ -4,7 +4,7 @@
 #'
 #' @return GLO FoodAvailability
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @importFrom magclass as.magpie setNames getSets as.data.frame
 #' @author Abhijeet Mishra
 #' @examples

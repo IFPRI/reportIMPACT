@@ -4,7 +4,7 @@
 #'
 #' @return GLO animals
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- animals(gdx)}

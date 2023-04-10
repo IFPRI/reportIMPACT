@@ -4,7 +4,7 @@
 #'
 #' @return GLO Yield
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportYield(gdx)}

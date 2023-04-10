@@ -4,7 +4,7 @@
 #'
 #' @return GLO Yields
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @importFrom dplyr group_by summarise %>% across all_of
 #' @importFrom magclass as.magpie setNames getSets as.data.frame collapseNames where getNames getItems
 #' @author Abhijeet Mishra

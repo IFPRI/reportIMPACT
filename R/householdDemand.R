@@ -4,7 +4,7 @@
 #'
 #' @return GLO householdDemand
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- householdDemand(gdx)}

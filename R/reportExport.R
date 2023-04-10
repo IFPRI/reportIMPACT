@@ -4,7 +4,7 @@
 #'
 #' @return GLO export
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportexport(gdx)}

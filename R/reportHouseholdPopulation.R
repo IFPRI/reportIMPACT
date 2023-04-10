@@ -4,7 +4,7 @@
 #'
 #' @return GLO population
 #'
-#' @import gamstransfer DOORMAT
+#' @import DOORMAT
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- reportHouseholdPopulation(gdx)}
