@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-8287-9922"))
 Description: Common output routines for extracting results from the IMPACT
     framework (versions 3.x).
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
