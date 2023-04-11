@@ -17,6 +17,9 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/IFPRI/reportIMPACT/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/IFPRI/reportIMPACT/actions/workflows/R-CMD-check.yaml)
+[![license](https://img.shields.io/badge/Licence-GPL%20(%3E%3D%203)-red)](https://github.com/IFPRI/reportIMPACT/blob/master/LICENSE.md)
+
+
 <!-- badges: end -->
 
 The goal of `reportIMPACT` is to be able to generate some basic outputs from an IMPACT model run which are compiled in a `rds` (_R Data Serialization_) format which saves a compressed and aggregated version of basic indicators from an IMPACT run.
