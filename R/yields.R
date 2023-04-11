@@ -65,9 +65,9 @@ yields <- function(gdx){
   crop_area_agg <- cropArea(gdx = gdx)
 
   mag_prod_agg      <- collapseNames(as.magpie(prod_final,spatial="region"))
-  traded_nontraded <- grep(pattern = "raded",x = getItems(mag_prod_agg,dim = 3.2),value = TRUE)
-  traded_nontraded_mag <- dimSums(mag_prod_agg[,,traded_nontraded],dim = 3.2,na.rm = TRUE)
-  traded_nontraded_mag <- add_dimension(x = traded_nontraded_mag,dim = 3.2,add = "groups",nm = "Combined")
+  traded_nontraded <- grep(pattern = "raded",x = getItems(mag_prod_agg,dim = "groups"),value = TRUE)
+  traded_nontraded_mag <- dimSums(mag_prod_agg[,,traded_nontraded],dim = "groups",na.rm = TRUE)
+  traded_nontraded_mag <- add_dimension(x = traded_nontraded_mag,dim = 3.2,add = "groups",nm = "Combined Oilseeds")
   mag_prod_agg <- mbind(mag_prod_agg,traded_nontraded_mag)
   mag_crop_area_agg <- collapseNames(as.magpie(crop_area_agg,spatial="region"))
 
@@ -75,8 +75,8 @@ yields <- function(gdx){
   mag_prod_agg_water_combined <- dimSums(x = mag_prod_agg     ,dim = "fctr",na.rm = TRUE)
   mag_crop_area_agg_combined  <- dimSums(x = mag_crop_area_agg,dim = "fctr",na.rm = TRUE)
 
-  mag_prod_agg_water_combined <- add_dimension(x = mag_prod_agg_water_combined,dim = 3.1,add = "fctr",nm = "Total")
-  mag_crop_area_agg_combined  <- add_dimension(x = mag_crop_area_agg_combined ,dim = 3.1,add = "fctr",nm = "Total")
+  mag_prod_agg_water_combined <- add_dimension(x = mag_prod_agg_water_combined,dim = 3.1,add = "fctr",nm = "IRRF")
+  mag_crop_area_agg_combined  <- add_dimension(x = mag_crop_area_agg_combined ,dim = 3.1,add = "fctr",nm = "IRRF")
 
   mag_prod_agg <- mbind(mag_prod_agg,mag_prod_agg_water_combined)
   mag_crop_area_agg <- mbind(mag_crop_area_agg,mag_crop_area_agg_combined)
