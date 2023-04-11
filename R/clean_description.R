@@ -20,5 +20,9 @@ clean_description <- function(df){
 
   df <- name_cleaner(df)
 
+  # Year factor fix
+
+  df$yrs <- as.factor(as.character(df$yrs))
+
   return(df)
 }

@@ -12,8 +12,9 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     data.table (>= 1.14.8),
-    magclass (>= 6.8.0),
+    magclass (>= 6.8.4),
     dplyr (>= 1.1.1),
-    DOORMAT (>= 2.3.0)
+    DOORMAT (>= 2.4.0),
+    forcats (>= 1.0.0)
 Remotes:
     github::IFPRI/DOORMAT

@@ -1,23 +1,30 @@
 #' getReport
 #'
 #' @param gdx final GDX from an IMPACT run
-#' @param prep_flag Who processed data
-#' @param export if RDS file should be written
-#' @param base_year Base year on which relative index can be calculated
+#' @param prep_flag Who processed data. Defaults to user name from the computer where this script is run.
+#' @param export if RDS file should be written. Defaults to TRUE
+#' @param base_year Base year on which relative index can be calculated. Default 2005.
 #'
 #' @return Full data output
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @importFrom data.table rbindlist
+#' @importFrom forcats fct_relevel
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- getReport(gdx)}
 #' @export
 
 getReport <- function(gdx,
-                      prep_flag = "Default",
+                      prep_flag = NULL,
                       export=TRUE,
                       base_year = 2005){
+
+  if(is.null(prep_flag)){
+    message("\nGrabbing user name\n")
+    prep_flag <- as.vector(Sys.info()["effective_user"])
+  }
+
   message("Start getReport(gdx)...")
   t <- Sys.time()
 
@@ -70,6 +77,12 @@ getReport <- function(gdx,
   out_list[[name]]            <- reportExport(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
+  # Import Quantity ----
+  name = "Import quantity"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportImport(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
   # Net Trade ----
   name = "Net Trade"
   message(reading,name,trail)
@@ -106,10 +119,22 @@ getReport <- function(gdx,
   out_list[[name]]            <- reportHungerRisk(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
-  # Hunger Risk ----
+  # Malnourished ----
+  name = "Malnourished children"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportMalnourished(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Biofuel Feedstock ----
   name = "Biofuel feedstock"
   message(reading,name,trail)
   out_list[[name]]            <- reportBiofuelFeedstock(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Livestock Feed Demand ----
+  name = "Livestock feed demand"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportLSFDemand(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Demand ----
@@ -122,6 +147,24 @@ getReport <- function(gdx,
   name = "Household demand"
   message(reading,name,trail)
   out_list[[name]]            <- reportHouseholdDemand(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Intermediate Demand ----
+  name = "Intermediate demand"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportIntermediateDemand(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Other Demand ----
+  name = "Other demand"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportOtherDemand(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Supply ----
+  name = "Supply"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportSupply(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Production ----
@@ -143,6 +186,10 @@ getReport <- function(gdx,
 
   # Add flag to idnetify
   out$prep_flag <- prep_flag
+
+  out$region <- as.factor(out$region)
+
+  if("GLO" %in% levels(out$region)) out$region <- forcats::fct_relevel(out$region, "GLO", after = Inf)
 
   if (export){
     export_dir <- paste0(dirname(gdx), "/", gsub(pattern = ".gdx", replacement = "", x = basename(gdx)),".rds")
