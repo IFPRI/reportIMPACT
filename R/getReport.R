@@ -65,6 +65,24 @@ getReport <- function(gdx,
   out_list[[name]]            <- reportHouseholdPopulation(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
+  # GDP ----
+  name = "GDP"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportGDP(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Household Income ----
+  name = "Household Income"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportHouseholdIncome(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # GDP Per Capita ----
+  name = "Per capita GDP"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportPerCapGDP(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
   # Animal Numbers ----
   name = "Animal Numbers"
   message(reading,name,trail)
@@ -99,18 +117,6 @@ getReport <- function(gdx,
   name = "Crop Area"
   message(reading,name,trail)
   out_list[[name]]            <- reportCropArea(gdx)
-  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
-
-  # GDP ----
-  name = "GDP"
-  message(reading,name,trail)
-  out_list[[name]]            <- reportGDP(gdx)
-  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
-
-  # Household Income ----
-  name = "Household Income"
-  message(reading,name,trail)
-  out_list[[name]]            <- reportHouseholdIncome(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
   # Hunger Risk ----
