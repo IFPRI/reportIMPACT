@@ -47,7 +47,7 @@ postAggregator <- function(df, gdx, col="indicator", type="crop_area"){
   if(length(pending_agg)>0){
 
     # Crop Area
-    if(identical(c("fctr","groups","long_name"), pending_agg)){
+    if(identical(c("fctr","groups","long_name"), pending_agg) | identical(c("fctr","groups","long_name","groups_disag"), pending_agg)){
 
       # Fctr Aggregate
       agg_col <- c("fctr")
