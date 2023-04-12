@@ -5,7 +5,7 @@
 #' @return GLO cropAreaAgg
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
-#' @importFrom magclass as.magpie add_dimension getSets getNames dimSums mbind
+#' @importFrom magclass as.magpie add_dimension getSets getNames dimSums mbind add_columns
 #' @importFrom readxl read_xlsx
 #' @author Abhijeet Mishra
 #' @examples
