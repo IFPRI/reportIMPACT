@@ -21,7 +21,7 @@ getReport <- function(gdx,
                       base_year = 2005){
 
   if(is.null(prep_flag)){
-    message("\nGrabbing user name\n")
+    cat("\nGrabbing user name\n")
     prep_flag <- as.vector(Sys.info()["effective_user"])
   }
 
