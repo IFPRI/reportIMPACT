@@ -13,6 +13,9 @@
 
 cropArea <- function(gdx){
   df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "AREACTYX0"))
+  df <- levelSum(df = df,dim_name = "fctr")
+  df <- levelSum(df = df,dim_name = "long_name")
+
   df_mag <- as.magpie(df)
   trade_sets <- grep(pattern = "raded",x = getNames(df_mag, dim = "groups"),value = TRUE)
   traded_agg <- df_mag[,,trade_sets]

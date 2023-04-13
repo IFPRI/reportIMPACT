@@ -1,6 +1,7 @@
 #' Name Cleaner
 #'
 #' @param df placeholder dataframe for cleanup
+#' @param fix_only_na if only NA as character in cols should be fixed
 #'
 #' @return cleaned dataframe with right names
 #' @export
@@ -9,7 +10,19 @@
 #' \dontrun{x <- name_cleaner(df)}
 #' @export
 
-name_cleaner <- function(df){
+name_cleaner <- function(df, fix_only_na = FALSE){
+
+  nums <- unlist(lapply(df, is.numeric), use.names = FALSE)
+
+  for(cols in colnames(df)[!nums]){
+    df[,cols] <- gsub(pattern = "\\<NA\\>",replacement = NA,x = df[,cols])
+  }
+
+  if(fix_only_na){
+    return(df)
+    stop()
+  }
+
   if(is.element("groups", colnames(df))){
     df$indicator <- paste(df$indicator,df$groups,sep = "|")
   }
@@ -46,5 +59,6 @@ name_cleaner <- function(df){
   }
 
   df$indicator <- gsub(pattern = "\\|NA",replacement = "",x = df$indicator)
+
   return(df)
 }
