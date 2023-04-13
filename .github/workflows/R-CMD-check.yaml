@@ -6,18 +6,10 @@ on:
   pull_request:
     branches: [main, master]
 
-- name: Enable r-universe repo, modify bspm integration
-        run: |
-          # install packages from https://pik-piam.r-universe.dev and CRAN
-          echo '
-          options(repos = c(universe = "https://pik-piam.r-universe.dev",
-                            CRAN = "https://cloud.r-project.org"))
-          ' >> .Rprofile
-          cat .Rprofile
-
 name: R-CMD-check
 
 jobs:
+
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
