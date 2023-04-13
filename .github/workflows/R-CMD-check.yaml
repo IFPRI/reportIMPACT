@@ -29,7 +29,7 @@ jobs:
       _R_CHECK_DEPENDS_ONLY_TESTS_: TRUE
 
     steps:
-        - name: Enable r-universe repo, modify bspm integration
+      - name: Enable r-universe repo, modify bspm integration
         run: |
           # install packages from https://pik-piam.r-universe.dev and CRAN
           echo '
