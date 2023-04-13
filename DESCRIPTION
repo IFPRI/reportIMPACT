@@ -12,7 +12,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Depends: 
     data.table (>= 1.14.8),
-    magclass (>= 6.8.4),
+    magclass (>= 6.8.5),
     dplyr (>= 1.1.1),
     DOORMAT (>= 2.5.0),
     forcats (>= 1.0.0),
