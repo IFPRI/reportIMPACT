@@ -12,5 +12,6 @@
 
 supply <- function(gdx){
   df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QSUPX0"))
+  df <- levelSum(df = df,dim_name = "long_name")
   return(df)
 }

@@ -44,5 +44,7 @@ name_cleaner <- function(df){
 
     df$indicator <- paste(df$indicator,df$lnd,sep = "|")
   }
+
+  df$indicator <- gsub(pattern = "\\|NA",replacement = "",x = df$indicator)
   return(df)
 }

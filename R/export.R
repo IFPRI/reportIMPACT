@@ -12,5 +12,6 @@
 
 export <- function(gdx){
   df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QEX0"))
+  df <- levelSum(df = df,dim_name = "long_name")
   return(df)
 }

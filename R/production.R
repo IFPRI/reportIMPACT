@@ -13,6 +13,8 @@
 production <- function(gdx){
   df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QSX0"))
 
+  df <- levelSum(df = df,dim_name = "long_name")
+
   df_mag <- as.magpie(df)
   trade_sets <- grep(pattern = "raded",x = getNames(df_mag),value = TRUE)
   traded_agg <- df_mag[,,trade_sets]
