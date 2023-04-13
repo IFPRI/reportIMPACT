@@ -12,7 +12,9 @@
 
 name_cleaner <- function(df, fix_only_na = FALSE){
 
-  nums <- unlist(lapply(df, is.numeric), use.names = FALSE)
+  nums <- unlist(sapply(df, is.numeric), use.names = FALSE)
+
+  df <- as.data.frame(df)
 
   for(cols in colnames(df)[!nums]){
     df[,cols] <- gsub(pattern = "\\<NA\\>",replacement = NA,x = df[,cols])
