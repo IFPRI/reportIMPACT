@@ -36,6 +36,7 @@ jobs:
           options(repos = c(universe = "https://pik-piam.r-universe.dev",
                             CRAN = "https://cloud.r-project.org"))
           ' >> .Rprofile
+          cat .Rprofile
 
       - uses: actions/checkout@v3
 
