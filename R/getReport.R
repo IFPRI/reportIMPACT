@@ -123,13 +123,13 @@ getReport <- function(gdx,
   name = "Hunger Risk"
   message(reading,name,trail)
   out_list[[name]]            <- reportHungerRisk(gdx)
-  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+  # out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year) -> Needs recalc most likely
 
   # Malnourished ----
   name = "Malnourished children"
   message(reading,name,trail)
   out_list[[name]]            <- reportMalnourished(gdx)
-  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+  # out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year) -> Needs recalc most likely
 
   # Biofuel Feedstock ----
   name = "Biofuel feedstock"
