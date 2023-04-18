@@ -25,25 +25,17 @@ calcRelative <- function(df,
   if(type == "same_unit") {
     df <- df %>%
       group_by_at(cols) %>%
-      mutate(value = value - value[yrs==case_when(any(unique(as.numeric(as.character(yrs))) %in% base_year) ~ base_year,
-                                                  !(any(unique(as.numeric(as.character(yrs))) %in% base_year)) ~ min(unique(as.numeric(as.character(yrs)))))]) %>%
+      mutate(value = value - value[yrs==base_year]) %>%
       mutate(unit2 = paste0(unit,
-                            " (wrt ",
-                            case_when(any(unique(as.numeric(as.character(yrs))) %in% base_year) ~ base_year,
-                                      !(any(unique(as.numeric(as.character(yrs))) %in% base_year)) ~ min(unique(as.numeric(as.character(yrs))))),
-                            ")"))
+                            " (wrt ", base_year,")"))
   }
 
   if(type == "index"){
     df <- df %>%
       group_by_at(cols) %>%
-      mutate(value = value / value[yrs==case_when(any(unique(as.numeric(as.character(yrs))) %in% base_year) ~ base_year,
-                                                  !(any(unique(as.numeric(as.character(yrs))) %in% base_year)) ~ min(unique(as.numeric(as.character(yrs)))))]) %>%
+      mutate(value = value / value[yrs==base_year]) %>%
       mutate(unit2 = paste0("Index ",
-                            " (wrt ",
-                            case_when(any(unique(as.numeric(as.character(yrs))) %in% base_year) ~ base_year,
-                                      !(any(unique(as.numeric(as.character(yrs))) %in% base_year)) ~ min(unique(as.numeric(as.character(yrs))))),
-                            ")"))
+                            " (wrt ",base_year,")"))
   }
 
   return(df)
