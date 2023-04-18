@@ -212,7 +212,7 @@ getReport <- function(gdx,
 
   # Combine Results
   out <- rbindlist(out_list,use.names=TRUE, fill=TRUE)
-  out$unit2[is.na(out$unit2)] = "Default"
+  out$unit2[is.na(out$unit2)] = out$unit[is.na(out$unit2)]
 
   # Add flag to idnetify
   out$prep_flag <- prep_flag
