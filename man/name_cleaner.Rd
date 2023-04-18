@@ -4,10 +4,12 @@
 \alias{name_cleaner}
 \title{Name Cleaner}
 \usage{
-name_cleaner(df)
+name_cleaner(df, fix_only_na = FALSE)
 }
 \arguments{
 \item{df}{placeholder dataframe for cleanup}
+
+\item{fix_only_na}{if only NA as character in cols should be fixed}
 }
 \value{
 cleaned dataframe with right names

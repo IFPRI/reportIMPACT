@@ -185,6 +185,30 @@ getReport <- function(gdx,
   out_list[[name]]            <- reportYields(gdx)
   out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
 
+  # Consumer prices ----
+  name = "Consumer Prices"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportConsumerPrices(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Producer prices ----
+  name = "Producer Prices"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportProducerPrices(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Aggregated World Prices ----
+  name = "Aggregated world prices"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportWeightedWorldPrices(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
+  # Single World Prices ----
+  name = "Single world prices"
+  message(reading,name,trail)
+  out_list[[name]]            <- reportSingleWorldPrices(gdx)
+  out_list <- additional_calculation(base_list = out_list,name = name,base_year = base_year)
+
 
   # Combine Results
   out <- rbindlist(out_list,use.names=TRUE, fill=TRUE)
@@ -197,7 +221,7 @@ getReport <- function(gdx,
 
   if("GLO" %in% levels(out$region)) out$region <- forcats::fct_relevel(out$region, "GLO", after = Inf)
 
-  if (export){
+    if (export){
     export_dir <- paste0(dirname(gdx), "/", gsub(pattern = ".gdx", replacement = "", x = basename(gdx)),".rds")
     saveRDS(object = out, file = export_dir)
     message("\nResults exported to ", export_dir)
