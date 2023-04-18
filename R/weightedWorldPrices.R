@@ -5,13 +5,15 @@
 #' @return GLO weightedWorldPrices
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
-#' @importFrom magclass as.magpie add_dimension getSets getNames dimSums mbind getRegions getItems
+#' @importFrom magclass as.magpie getSets getNames dimSums getItems
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- weightedWorldPrices(gdx)}
 #' @export
 
 weightedWorldPrices <- function(gdx){
+  `getItems`<- NULL
+
   prices <- as.magpie(readGDX(gdx = gdx,name = "PWX0")[["data"]],spatial="cty",temporal="yrs")
   demand <- as.magpie(readGDX(gdx = gdx,name = "QDX0")[["data"]],spatial="cty",temporal="yrs")
 
@@ -37,7 +39,7 @@ weightedWorldPrices <- function(gdx){
   value_agg_mag <- as.magpie(value_aggregate)
   demand_agg_mag <- as.magpie(demand_aggregate)
 
-  getItems(demand_agg_mag,dim=3.1) <- getItems(value_agg_mag,dim=3.1)
+  magclass::getItems(demand_agg_mag,dim=3.1) <- getItems(value_agg_mag,dim=3.1)
 
   price_aggregate <- value_agg_mag / demand_agg_mag[,,getNames(value_agg_mag)]
 
