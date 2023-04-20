@@ -10,7 +10,7 @@
 #' \dontrun{x <- householdPopulation(gdx)}
 #' @export
 
-householdPopulation <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "POPHX0"))
+householdPopulation <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "POPHX0"))
   return(df)
 }

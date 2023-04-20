@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportIntermediateDemand(gdx)}
 #' @export
 
-reportIntermediateDemand <- function(gdx){
+reportIntermediateDemand <- function(gdx) {
   df <- intermediateDemand(gdx = gdx)
   df$indicator <- "Intermediate Demand"
 

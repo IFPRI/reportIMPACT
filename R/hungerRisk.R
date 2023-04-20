@@ -10,7 +10,7 @@
 #' \dontrun{x <- hungerRisk(gdx)}
 #' @export
 
-hungerRisk <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "PopulationAtRisk"))
+hungerRisk <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "PopulationAtRisk"))
   return(df)
 }

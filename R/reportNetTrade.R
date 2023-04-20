@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportNetExport(gdx)}
 #' @export
 
-reportNetTrade <- function(gdx){
+reportNetTrade <- function(gdx) {
   df <- netTrade(gdx = gdx)
   df$indicator <- "Net Trade"
 

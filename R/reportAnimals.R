@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportAnimals(gdx)}
 #' @export
 
-reportAnimals <- function(gdx){
+reportAnimals <- function(gdx) {
   df <- animals(gdx = gdx)
   df$indicator <- "Animals"
 
@@ -18,7 +18,7 @@ reportAnimals <- function(gdx){
 
   # lvsys is same across all set elements, pick any one
 
-  df <- df[df$lvsys %in% unique(df$lvsys)[1],]
+  df <- df[df$lvsys %in% unique(df$lvsys)[1], ]
 
   return(df)
 }

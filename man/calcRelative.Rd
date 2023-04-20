@@ -18,7 +18,8 @@ calcRelative(
 
 \item{cols}{columns which are used for relative index calculation}
 
-\item{type}{If relative index is calculate in same unit ('same_unit') or as an index on base year ('index')}
+\item{type}{If relative index is calculate in same unit ('same_unit') or as
+an index on base year ('index')}
 }
 \value{
 Recalculate dataframe with relative calculation

@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportGDP(gdx)}
 #' @export
 
-reportGDP <- function(gdx){
+reportGDP <- function(gdx) {
   df <- GDP(gdx = gdx)
   df$indicator <- "GDP"
 

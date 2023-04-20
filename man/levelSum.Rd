@@ -24,7 +24,8 @@ levelSum(
 
 \item{na.rm}{If NAs should be ignored during sum. Defaults to TRUE}
 
-\item{bind}{If new aggregation should be binded to the original dataframe passed on to "df" argument}
+\item{bind}{If new aggregation should be binded to the original dataframe
+passed on to "df" argument}
 }
 \value{
 Aggregated dataframe

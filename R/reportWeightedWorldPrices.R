@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportWeightedWorldPrices(gdx)}
 #' @export
 
-reportWeightedWorldPrices <- function(gdx){
+reportWeightedWorldPrices <- function(gdx) {
   df <- weightedWorldPrices(gdx = gdx)
   df$indicator <- "Aggregated World Prices"
 

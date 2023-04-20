@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportPerCapGDP(gdx)}
 #' @export
 
-reportPerCapGDP <- function(gdx){
+reportPerCapGDP <- function(gdx) {
   df <- percapGDP(gdx = gdx)
   df$indicator <- "GDP per Capita"
 

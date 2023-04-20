@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportMalnourished(gdx)}
 #' @export
 
-reportMalnourished <- function(gdx){
+reportMalnourished <- function(gdx) {
   df <- malnourished(gdx = gdx)
   df$indicator <- "Malnourished Children"
 

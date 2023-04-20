@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportHouseholdIncome(gdx)}
 #' @export
 
-reportHouseholdIncome <- function(gdx){
+reportHouseholdIncome <- function(gdx) {
   df <- householdIncome(gdx = gdx)
   df$indicator <- "Household Income"
 

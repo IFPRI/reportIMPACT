@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportCropArea(gdx)}
 #' @export
 
-reportCropArea <- function(gdx){
+reportCropArea <- function(gdx) {
   df <- cropArea(gdx = gdx)
   df$indicator <- "Crop area"
 

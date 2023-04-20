@@ -10,7 +10,7 @@
 #' \dontrun{x <- GDP(gdx)}
 #' @export
 
-GDP <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "GDPX0"))
+GDP <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "GDPX0"))
   return(df)
 }

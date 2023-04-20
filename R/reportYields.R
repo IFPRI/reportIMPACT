@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportYield(gdx)}
 #' @export
 
-reportYields <- function(gdx){
+reportYields <- function(gdx) {
   df <- yields(gdx = gdx)
   df$indicator <- "Aggregated Yield"
 

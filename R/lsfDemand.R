@@ -10,8 +10,8 @@
 #' \dontrun{x <- lsfDemand(gdx)}
 #' @export
 
-lsfDemand <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QLX0"))
-  df <- levelSum(df = df,dim_name = "long_name")
+lsfDemand <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QLX0"))
+  df <- levelSum(df = df, dim_name = "long_name")
   return(df)
 }

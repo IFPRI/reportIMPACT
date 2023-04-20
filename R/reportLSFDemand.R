@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportLSFDemand(gdx)}
 #' @export
 
-reportLSFDemand <- function(gdx){
+reportLSFDemand <- function(gdx) {
   df <- lsfDemand(gdx = gdx)
   df$indicator <- "Livestock Feed Demand"
 

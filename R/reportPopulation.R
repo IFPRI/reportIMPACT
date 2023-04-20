@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportPopulation(gdx)}
 #' @export
 
-reportPopulation <- function(gdx){
+reportPopulation <- function(gdx) {
   df <- population(gdx = gdx)
   df$indicator <- "Population"
 

@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportBiofuelFeedstock(gdx)}
 #' @export
 
-reportBiofuelFeedstock <- function(gdx){
+reportBiofuelFeedstock <- function(gdx) {
   df <- biofuelFeedstock(gdx = gdx)
   df$indicator <- "Biofuel feedstock demand"
 

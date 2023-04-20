@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportHungerRisk(gdx)}
 #' @export
 
-reportHungerRisk <- function(gdx){
+reportHungerRisk <- function(gdx) {
   df <- hungerRisk(gdx = gdx)
   df$indicator <- "Population at hunger risk"
 

@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportImport(gdx)}
 #' @export
 
-reportImport <- function(gdx){
+reportImport <- function(gdx) {
   df <- import(gdx = gdx)
   df$indicator <- "Import"
 

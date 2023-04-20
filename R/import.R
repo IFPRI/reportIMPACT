@@ -10,8 +10,8 @@
 #' \dontrun{x <- import(gdx)}
 #' @export
 
-import <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QMX0"))
-  df <- levelSum(df = df,dim_name = "long_name")
+import <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QMX0"))
+  df <- levelSum(df = df, dim_name = "long_name")
   return(df)
 }

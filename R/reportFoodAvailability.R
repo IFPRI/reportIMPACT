@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportFoodAvailability(gdx)}
 #' @export
 
-reportFoodAvailability <- function(gdx){
+reportFoodAvailability <- function(gdx) {
   df <- foodAvailability(gdx = gdx)
   df$indicator <- "Food Availability"
 

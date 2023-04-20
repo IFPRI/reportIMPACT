@@ -9,11 +9,13 @@ getReport(gdx, prep_flag = NULL, export = TRUE, base_year = 2005)
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
 
-\item{prep_flag}{Who processed data. Defaults to user name from the computer where this script is run.}
+\item{prep_flag}{Who processed data.
+Defaults to user name from the computer where this script is run.}
 
 \item{export}{if RDS file should be written. Defaults to TRUE}
 
-\item{base_year}{Base year on which relative index can be calculated. Default 2005.}
+\item{base_year}{Base year on which relative index can be calculated.
+Default 2005.}
 }
 \value{
 Full data output

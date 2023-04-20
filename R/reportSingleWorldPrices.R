@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportSingleWorldPrices(gdx)}
 #' @export
 
-reportSingleWorldPrices <- function(gdx){
+reportSingleWorldPrices <- function(gdx) {
   df <- singleWorldPrices(gdx = gdx)
   df$indicator <- "World prices"
 

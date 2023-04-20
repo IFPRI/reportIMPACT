@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportProduction(gdx)}
 #' @export
 
-reportProduction <- function(gdx){
+reportProduction <- function(gdx) {
   df <- production(gdx = gdx)
   df$indicator <- "Production"
 

@@ -10,7 +10,7 @@
 #' \dontrun{x <- biofuelFeedstock(gdx)}
 #' @export
 
-biofuelFeedstock <- function(gdx){
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx,name = "QBFX0"))
+biofuelFeedstock <- function(gdx) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QBFX0"))
   return(df)
 }

@@ -10,7 +10,7 @@
 #' \dontrun{x <- reportSupply(gdx)}
 #' @export
 
-reportSupply <- function(gdx){
+reportSupply <- function(gdx) {
   df <- supply(gdx = gdx)
   df$indicator <- "Supply"
 
