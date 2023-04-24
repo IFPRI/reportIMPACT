@@ -20,11 +20,16 @@
 getReport <- function(gdx,
                       prep_flag = NULL,
                       export = TRUE,
-                      base_year = 2005) {
+                      base_year = NULL) {
 
   if (is.null(prep_flag)) {
     cat("\nGrabbing user name\n")
     prep_flag <- as.vector(Sys.info()["effective_user"])
+  }
+
+  if (is.null(base_year)) {
+    cat("\nGrabbing first year of simulation\n")
+    base_year <- as.numeric(as.character(readGDX(gdx = gdx,name = "YRT1")[["data"]]$yrs))
   }
 
   message("Start getReport(gdx)...")
@@ -243,8 +248,6 @@ getReport <- function(gdx,
   out$prep_flag <- prep_flag
 
   out$region <- as.factor(out$region)
-
-  out <- out[, cols]
 
   if ("GLO" %in% levels(out$region)) {
     out$region <- forcats::fct_relevel(out$region, "GLO", after = Inf)
