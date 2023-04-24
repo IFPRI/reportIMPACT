@@ -4,7 +4,7 @@
 \alias{getReport}
 \title{getReport}
 \usage{
-getReport(gdx, prep_flag = NULL, export = TRUE, base_year = 2005)
+getReport(gdx, prep_flag = NULL, export = TRUE, base_year = NULL)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
