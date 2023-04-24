@@ -1,6 +1,6 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
-Version: 3.4.0
+Version: 3.5.0
 Authors@R: 
     person("Abhijeet", "Mishra",  , "A.Mishra@cgiar.org", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-8287-9922"))
@@ -14,7 +14,7 @@ Imports:
     data.table (>= 1.14.8),
     magclass (>= 6.8.5),
     dplyr (>= 1.1.1),
-    DOORMAT (>= 2.5.0),
+    DOORMAT (>= 2.9.0),
     forcats (>= 1.0.0),
     readxl (>= 1.4.2)
 Remotes:
