@@ -35,213 +35,66 @@ getReport <- function(gdx,
   message("Start getReport(gdx)...")
   t <- Sys.time()
 
-  out_list <- list()
   cols <- suppressMessages(colnames(reportPopulation(gdx)))
 
   # Custom function for additional calcs ----
   additional_calculation <- function(base_list,
-                                     name,
                                      base_year) {
     stopifnot(is.list(base_list))
-    stopifnot(is.character(name))
     stopifnot(is.numeric(base_year))
 
     dummy <- list()
 
-    dummy[[paste0(name, " (relative)")]] <-
-      calcRelative(df = base_list[[name]], base_year = base_year)
+    dummy[["relative"]] <-
+      calcRelative(df = base_list, base_year = base_year)
 
-    dummy[[paste0(name, " (index)")]]    <-
-      calcRelative(df = base_list[[name]], base_year = base_year,
+    dummy[["index"]]    <-
+      calcRelative(df = base_list, base_year = base_year,
                    type = "index")
-    return(append(base_list, dummy))
+    return(rbindlist(dummy))
+    }
+
+  func_name <- c("reportPopulation(gdx)",
+                 "reportHouseholdPopulation(gdx)",
+                 "reportGDP(gdx)",
+                 "reportHouseholdIncome(gdx)",
+                 "reportPerCapGDP(gdx)",
+                 "reportAnimals(gdx)",
+                 "reportExport(gdx)",
+                 "reportImport(gdx)",
+                 "reportNetTrade(gdx)",
+                 "reportFoodAvailability(gdx)",
+                 "reportCropArea(gdx)",
+                 "reportBiofuelFeedstock(gdx)",
+                 "reportLSFDemand(gdx)",
+                 "reportDemand(gdx)",
+                 "reportHouseholdDemand(gdx)",
+                 "reportIntermediateDemand(gdx)",
+                 "reportOtherDemand(gdx)",
+                 "reportSupply(gdx)",
+                 "reportProduction(gdx)",
+                 "reportYields(gdx)",
+                 "reportConsumerPrices(gdx)",
+                 "reportProducerPrices(gdx)",
+                 "reportWeightedWorldPrices(gdx)",
+                 "reportSingleWorldPrices(gdx)",
+                 "reportHungerRisk(gdx)",
+                 "reportMalnourished(gdx)"
+                 )
+
+  out <- NULL
+  for(func in func_name){
+    display <- gsub(pattern = "report|\\(gdx\\)",replacement = "",x = func)
+    display <- gsub("([a-z])([A-Z])", "\\1 \\2", display)
+    message(paste("Reading",display,"....."))
+    temp <- eval(parse(text = func))[,cols]
+    temp$unit2 <- temp$unit
+    relative_indicators <- additional_calculation(base_list = temp,
+                                                  base_year = base_year)
+    temp <- rbind(temp,relative_indicators)
+    out <- rbind(out,temp)
   }
 
-  # Dummy text
-  reading <- "Reading "
-  trail <- " ........"
-
-  # Population ----
-  name <- "Population"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportPopulation(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Household Population ----
-  name <- "Household Population"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportHouseholdPopulation(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # GDP ----
-  name <- "GDP"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportGDP(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Household Income ----
-  name <- "Household Income"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportHouseholdIncome(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # GDP Per Capita ----
-  name <- "Per capita GDP"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportPerCapGDP(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Animal Numbers ----
-  name <- "Animal Numbers"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportAnimals(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Export Quantity ----
-  name <- "Export quantity"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportExport(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Import Quantity ----
-  name <- "Import quantity"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportImport(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Net Trade ----
-  name <- "Net Trade"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportNetTrade(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Food Availability ----
-  name <- "Food Availability"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportFoodAvailability(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Crop Area ----
-  name <- "Crop Area"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportCropArea(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Hunger Risk ----
-  name <- "Hunger Risk"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportHungerRisk(gdx)
-
-  # Malnourished ----
-  name <- "Malnourished children"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportMalnourished(gdx)
-
-  # Biofuel Feedstock ----
-  name <- "Biofuel feedstock"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportBiofuelFeedstock(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Livestock Feed Demand ----
-  name <- "Livestock feed demand"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportLSFDemand(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Demand ----
-  name <- "Demand"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportDemand(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Household Demand ----
-  name <- "Household demand"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportHouseholdDemand(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Intermediate Demand ----
-  name <- "Intermediate demand"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportIntermediateDemand(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Other Demand ----
-  name <- "Other demand"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportOtherDemand(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Supply ----
-  name <- "Supply"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportSupply(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Production ----
-  name <- "Production"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportProduction(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Yields ----
-  name <- "Yields"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportYields(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Consumer prices ----
-  name <- "Consumer Prices"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportConsumerPrices(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Producer prices ----
-  name <- "Producer Prices"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportProducerPrices(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Aggregated World Prices ----
-  name <- "Aggregated world prices"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportWeightedWorldPrices(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-  # Single World Prices ----
-  name <- "Single world prices"
-  message(reading, name, trail)
-  out_list[[name]]            <- reportSingleWorldPrices(gdx)
-  out_list <- additional_calculation(base_list = out_list, name = name,
-                                     base_year = base_year)
-
-
-  # Combine Results
-  out <- rbindlist(out_list, use.names = TRUE, fill = TRUE)
   out$unit2[is.na(out$unit2)] <- out$unit[is.na(out$unit2)]
 
   # Add flag to identify
