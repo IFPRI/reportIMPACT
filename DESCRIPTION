@@ -3,7 +3,7 @@ Title: IMPACT outputs R package for IMPACT version 3.x
 Version: 3.7.0
 Authors@R: 
   c(person(given = "Abhijeet",
-           family = "Pebesma",
+           family = "Mishra",
            role = c("aut", "cre"),
            email = "A.Mishra@cgiar.org",
            comment = c(ORCID = "0000-0002-8287-9922")))
