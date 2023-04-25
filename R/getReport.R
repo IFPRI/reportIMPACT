@@ -29,7 +29,8 @@ getReport <- function(gdx,
 
   if (is.null(base_year)) {
     cat("\nGrabbing first year of simulation\n")
-    base_year <- as.numeric(as.character(readGDX(gdx = gdx,name = "YRT1")[["data"]]$yrs))
+    base_year <- as.numeric(as.character(readGDX(gdx = gdx,
+                                                 name = "YRT1")[["data"]]$yrs))
   }
 
   message("Start getReport(gdx)...")
@@ -83,16 +84,16 @@ getReport <- function(gdx,
                  )
 
   out <- NULL
-  for(func in func_name){
-    display <- gsub(pattern = "report|\\(gdx\\)",replacement = "",x = func)
+  for (func in func_name){
+    display <- gsub(pattern = "report|\\(gdx\\)", replacement = "", x = func)
     display <- gsub("([a-z])([A-Z])", "\\1 \\2", display)
-    message(paste("Reading",display,"....."))
-    temp <- eval(parse(text = func))[,cols]
+    message(paste("Reading", display, "....."))
+    temp <- eval(parse(text = func))[, cols]
     temp$unit2 <- temp$unit
     relative_indicators <- additional_calculation(base_list = temp,
                                                   base_year = base_year)
-    temp <- rbind(temp,relative_indicators)
-    out <- rbind(out,temp)
+    temp <- rbind(temp, relative_indicators)
+    out <- rbind(out, temp)
   }
 
   out$unit2[is.na(out$unit2)] <- out$unit[is.na(out$unit2)]

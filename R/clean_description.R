@@ -1,14 +1,14 @@
-#" clean_description
-#"
-#" @param df dataframe with description column
-#"
-#" @return GLO population
-#"
-#" @importFrom DOORMAT readGDX aggregateIMPACT
-#" @author Abhijeet Mishra
-#" @examples
-#" \dontrun{x <- clean_description(df)}
-#" @export
+#' clean_description
+#'
+#' @param df dataframe with description column
+#'
+#' @return GLO population
+#'
+#' @importFrom DOORMAT readGDX aggregateIMPACT
+#' @author Abhijeet Mishra
+#' @examples
+#' \dontrun{x <- clean_description(df)}
+#' @export
 
 clean_description <- function(df) {
 
@@ -24,6 +24,10 @@ clean_description <- function(df) {
   # Year factor fix
 
   df$yrs <- as.factor(as.character(df$yrs))
+
+  # Unit fix
+
+  df <- clean_unit(df)
 
   return(df)
 }
