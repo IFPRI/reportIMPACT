@@ -1,12 +1,9 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
 Version: 4.0.0
-Authors@R: 
-  c(person(given = "Abhijeet",
-           family = "Mishra",
-           role = c("aut", "cre"),
-           email = "A.Mishra@cgiar.org",
-           comment = c(ORCID = "0000-0002-8287-9922")))
+Authors@R: c(
+    person("Abhijeet", "Mishra", , "A.Mishra@cgiar.org", role = c("aut", "cre"))
+    )
 Description: Common output routines for extracting results from the IMPACT
     framework (versions 3.x).
 License: GPL (>= 3)
