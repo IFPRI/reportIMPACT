@@ -1,6 +1,6 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
-Version: 3.7.0
+Version: 4.0.0
 Authors@R: 
   c(person(given = "Abhijeet",
            family = "Mishra",
