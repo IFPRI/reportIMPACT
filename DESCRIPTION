@@ -21,4 +21,5 @@ Remotes:
     github::IFPRI/DOORMAT,
     github::pik-piam/magclass
 Suggests:
-    Additional_repositories: https://ifpri.github.io/drat
+    reportIMPACT
+Additional_repositories: https://ifpri.github.io/drat
