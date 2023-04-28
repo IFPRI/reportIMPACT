@@ -12,7 +12,7 @@
 #' @export
 
 cropArea <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0"))
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0")) #Cty level
   df <- levelSum(df = df, dim_name = "fctr")
   df <- levelSum(df = df, dim_name = "long_name")
 
