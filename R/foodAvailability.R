@@ -1,7 +1,7 @@
 #' FoodAvailability
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO FoodAvailability
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -11,13 +11,13 @@
 #' \dontrun{x <- foodAvailability(gdx)}
 #' @export
 
-foodAvailability <- function(gdx) {
+foodAvailability <- function(gdx, ...) {
 
   setNames <- getSets <- NULL
 
-  food_demand <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QFX0"))
+  food_demand <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QFX0"), ...)
   food_demand <- levelSum(df = food_demand, dim_name = "long_name")
-  population <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "POPX0"))
+  population <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "POPX0"), ...)
 
   dfx <- as.magpie(food_demand) / setNames(as.magpie(population), NULL)
 

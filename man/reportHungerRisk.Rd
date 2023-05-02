@@ -4,10 +4,12 @@
 \alias{reportHungerRisk}
 \title{reportHungerRisk}
 \usage{
-reportHungerRisk(gdx)
+reportHungerRisk(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO population

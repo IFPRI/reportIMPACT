@@ -4,10 +4,12 @@
 \alias{reportWeightedWorldPrices}
 \title{reportWeightedWorldPrices}
 \usage{
-reportWeightedWorldPrices(gdx)
+reportWeightedWorldPrices(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO CropArea

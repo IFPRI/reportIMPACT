@@ -1,7 +1,7 @@
 #' reportSupply
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO population
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- reportSupply(gdx)}
 #' @export
 
-reportSupply <- function(gdx) {
-  df <- supply(gdx = gdx)
+reportSupply <- function(gdx, ...) {
+  df <- supply(gdx = gdx, ...)
   df$indicator <- "Supply"
 
   df <- clean_description(df)

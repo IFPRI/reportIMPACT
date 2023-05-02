@@ -4,10 +4,12 @@
 \alias{weightedWorldPrices}
 \title{World Prices}
 \usage{
-weightedWorldPrices(gdx)
+weightedWorldPrices(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO weightedWorldPrices

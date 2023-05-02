@@ -3,7 +3,7 @@
 #' @param gdx final GDX from an IMPACT run
 #'
 #' @return GLO weightedWorldPrices
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @importFrom magclass as.magpie getSets getNames dimSums getItems
 #' @author Abhijeet Mishra
@@ -11,7 +11,7 @@
 #' \dontrun{x <- weightedWorldPrices(gdx)}
 #' @export
 
-weightedWorldPrices <- function(gdx) {
+weightedWorldPrices <- function(gdx, ...) {
   `getItems` <- NULL
 
   prices <- as.magpie(readGDX(gdx = gdx, name = "PWX0")[["data"]],
@@ -37,10 +37,12 @@ weightedWorldPrices <- function(gdx) {
   pass_list[["data"]] <- value
   pass_list[["domains"]] <- c("c", "cty")
 
-  value_aggregate <- aggregateIMPACT(df = pass_list)
+  value_aggregate <- aggregateIMPACT(df = pass_list, ...)
   value_aggregate <- levelSum(df = value_aggregate, dim_name = "long_name")
 
-  demand_aggregate <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QDX0"))
+  demand_aggregate <- aggregateIMPACT(
+    df = readGDX(gdx = gdx, name = "QDX0"),
+    ...)
   demand_aggregate <- levelSum(df = demand_aggregate, dim_name = "long_name")
 
   value_agg_mag <- as.magpie(value_aggregate)

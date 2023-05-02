@@ -1,7 +1,7 @@
 #' reportImport
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO export
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- reportImport(gdx)}
 #' @export
 
-reportImport <- function(gdx) {
-  df <- import(gdx = gdx)
+reportImport <- function(gdx, ...) {
+  df <- import(gdx = gdx, ...)
   df$indicator <- "Import"
 
   df <- clean_description(df)

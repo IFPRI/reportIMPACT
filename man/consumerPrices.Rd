@@ -4,10 +4,12 @@
 \alias{consumerPrices}
 \title{Consumer Prices}
 \usage{
-consumerPrices(gdx)
+consumerPrices(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO consumerPrices

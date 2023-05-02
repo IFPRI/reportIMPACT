@@ -1,7 +1,7 @@
 #' Intermediate Demand
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO other Demand
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- intermediateDemand(gdx)}
 #' @export
 
-intermediateDemand <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QINTX0"))
+intermediateDemand <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QINTX0"), ...)
 
   # Traded / Non traded Fix
 

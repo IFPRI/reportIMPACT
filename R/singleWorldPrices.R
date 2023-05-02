@@ -1,7 +1,7 @@
 #' Single World Prices
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO singleWorldPrices
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -12,7 +12,7 @@
 #' \dontrun{x <- singleWorldPrices(gdx)}
 #' @export
 
-singleWorldPrices <- function(gdx) {
+singleWorldPrices <- function(gdx, ...) {
   df <- readGDX(gdx = gdx, name = "PWX0")
   df[["data"]]$cty <- "GLO"
   df[["domains"]] <- c("c", "cty")

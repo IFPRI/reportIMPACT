@@ -4,10 +4,12 @@
 \alias{otherDemand}
 \title{Other Demand}
 \usage{
-otherDemand(gdx)
+otherDemand(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO other Demand

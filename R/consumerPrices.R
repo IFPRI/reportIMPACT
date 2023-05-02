@@ -1,7 +1,7 @@
 #' Consumer Prices
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO consumerPrices
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -12,7 +12,7 @@
 #' \dontrun{x <- consumerPrices(gdx)}
 #' @export
 
-consumerPrices <- function(gdx) {
+consumerPrices <- function(gdx, ...) {
   prices <- as.magpie(readGDX(gdx = gdx, name = "PCX0")[["data"]],
                       spatial = "cty", temporal = "yrs")
   demand <- as.magpie(readGDX(gdx = gdx, name = "QDX0")[["data"]],
@@ -31,10 +31,11 @@ consumerPrices <- function(gdx) {
   pass_list[["data"]] <- value
   pass_list[["domains"]] <- c("c", "cty")
 
-  value_aggregate <- aggregateIMPACT(df = pass_list)
+  value_aggregate <- aggregateIMPACT(df = pass_list, ...)
   value_aggregate <- levelSum(df = value_aggregate, dim_name = "long_name")
 
-  demand_aggregate <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QDX0"))
+  demand_aggregate <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QDX0"),
+                                      ...)
   demand_aggregate <- levelSum(df = demand_aggregate, dim_name = "long_name")
 
   price_aggregate <-

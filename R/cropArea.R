@@ -3,7 +3,7 @@
 #' @param gdx final GDX from an IMPACT run
 #'
 #' @return GLO cropArea
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @importFrom DOORMAT readGDX aggregateIMPACT
 #' @importFrom magclass as.magpie add_dimension getSets getNames dimSums mbind
 #' @author Abhijeet Mishra
@@ -11,8 +11,8 @@
 #' \dontrun{x <- cropArea(gdx)}
 #' @export
 
-cropArea <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0")) #Cty level
+cropArea <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0"), ...) #Cty
   df <- levelSum(df = df, dim_name = "fctr")
   df <- levelSum(df = df, dim_name = "long_name")
 

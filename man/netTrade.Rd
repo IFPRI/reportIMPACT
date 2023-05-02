@@ -4,10 +4,12 @@
 \alias{netTrade}
 \title{netTrade}
 \usage{
-netTrade(gdx)
+netTrade(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO netExport

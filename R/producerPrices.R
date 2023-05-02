@@ -1,7 +1,7 @@
 #' Producer Prices
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO producerPrices
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -12,7 +12,7 @@
 #' \dontrun{x <- producerPrices(gdx)}
 #' @export
 
-producerPrices <- function(gdx) {
+producerPrices <- function(gdx, ...) {
   prices <- as.magpie(readGDX(gdx = gdx, name = "PPX0")[["data"]],
                       spatial = "cty",
                       temporal = "yrs")
@@ -33,11 +33,11 @@ producerPrices <- function(gdx) {
   pass_list[["data"]] <- value
   pass_list[["domains"]] <- c("j", "cty")
 
-  value_aggregate <- aggregateIMPACT(df = pass_list)
+  value_aggregate <- aggregateIMPACT(df = pass_list, ...)
   value_aggregate <- levelSum(df = value_aggregate, dim_name = "long_name")
 
   production_aggregate <- aggregateIMPACT(
-    df = readGDX(gdx = gdx, name = "QSX0"))
+    df = readGDX(gdx = gdx, name = "QSX0"), ...)
   production_aggregate <- levelSum(
     df = production_aggregate, dim_name = "long_name")
 

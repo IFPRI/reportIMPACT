@@ -4,10 +4,12 @@
 \alias{intermediateDemand}
 \title{Intermediate Demand}
 \usage{
-intermediateDemand(gdx)
+intermediateDemand(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO other Demand

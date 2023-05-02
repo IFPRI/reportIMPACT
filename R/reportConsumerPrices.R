@@ -1,7 +1,7 @@
 #' reportConsumerPrices
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO CropArea
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- reportConsumerPrices(gdx)}
 #' @export
 
-reportConsumerPrices <- function(gdx) {
-  df <- consumerPrices(gdx = gdx)
+reportConsumerPrices <- function(gdx, ...) {
+  df <- consumerPrices(gdx = gdx, ...)
   df$indicator <- "Consumer Prices"
 
   df <- clean_description(df)

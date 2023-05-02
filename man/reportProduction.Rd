@@ -4,10 +4,12 @@
 \alias{reportProduction}
 \title{reportProduction}
 \usage{
-reportProduction(gdx)
+reportProduction(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO population

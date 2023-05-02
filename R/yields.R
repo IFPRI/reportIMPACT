@@ -1,7 +1,7 @@
 #' Yields
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO Yields
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -13,7 +13,7 @@
 #' \dontrun{x <- Yields(gdx)}
 #' @export
 
-yields <- function(gdx) {
+yields <- function(gdx, ...) {
 
   getSets <- value <- NULL
 
@@ -64,7 +64,7 @@ yields <- function(gdx) {
   prod_list[["data"]] <- production_cty_agg
   prod_list[["domains"]] <- readGDX(gdx = gdx, name = "AREACTYX0")[["domains"]]
 
-  prod_final <- aggregateIMPACT(prod_list)
+  prod_final <- aggregateIMPACT(prod_list, ...)
   prod_final <- levelSum(df = prod_final, dim_name = "fctr")
   prod_final <- levelSum(df = prod_final, dim_name = "long_name")
   prod_final <- name_cleaner(df = prod_final, fix_only_na = TRUE)
@@ -87,7 +87,7 @@ yields <- function(gdx) {
   mag_prod_agg <- mbind(mag_prod_agg, traded_nontraded_mag)
 
   message(".....Retrieving country level crop area")
-  crop_area_agg <- cropArea(gdx = gdx)
+  crop_area_agg <- cropArea(gdx = gdx, ...)
   crop_area_agg <- name_cleaner(df = crop_area_agg, fix_only_na = TRUE)
 
   mag_crop_area_agg <-

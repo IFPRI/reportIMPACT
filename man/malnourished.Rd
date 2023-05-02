@@ -4,10 +4,12 @@
 \alias{malnourished}
 \title{Malnourished}
 \usage{
-malnourished(gdx)
+malnourished(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO malnourished

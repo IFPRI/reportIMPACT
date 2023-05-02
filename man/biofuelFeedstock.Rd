@@ -4,10 +4,12 @@
 \alias{biofuelFeedstock}
 \title{biofuelFeedstock}
 \usage{
-biofuelFeedstock(gdx)
+biofuelFeedstock(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO biofuelFeedstock

@@ -4,10 +4,12 @@
 \alias{foodAvailability}
 \title{FoodAvailability}
 \usage{
-foodAvailability(gdx)
+foodAvailability(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO FoodAvailability

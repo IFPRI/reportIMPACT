@@ -1,7 +1,7 @@
 #' reportHouseholdDemand
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO population
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- reportHouseholdDemand(gdx)}
 #' @export
 
-reportHouseholdDemand <- function(gdx) {
-  df <- householdDemand(gdx = gdx)
+reportHouseholdDemand <- function(gdx, ...) {
+  df <- householdDemand(gdx = gdx, ...)
   df$indicator <- "Household demand"
 
   df <- clean_description(df)

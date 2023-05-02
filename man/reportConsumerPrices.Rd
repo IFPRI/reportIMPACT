@@ -4,10 +4,12 @@
 \alias{reportConsumerPrices}
 \title{reportConsumerPrices}
 \usage{
-reportConsumerPrices(gdx)
+reportConsumerPrices(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO CropArea

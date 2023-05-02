@@ -4,10 +4,12 @@
 \alias{import}
 \title{import}
 \usage{
-import(gdx)
+import(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO import

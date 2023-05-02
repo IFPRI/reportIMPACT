@@ -4,10 +4,12 @@
 \alias{reportPerCapGDP}
 \title{reportPerCapGDP}
 \usage{
-reportPerCapGDP(gdx)
+reportPerCapGDP(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO population

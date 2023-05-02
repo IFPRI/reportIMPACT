@@ -1,7 +1,7 @@
 #' import
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO import
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- import(gdx)}
 #' @export
 
-import <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QMX0"))
+import <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QMX0"), ...)
   df <- levelSum(df = df, dim_name = "long_name")
   return(df)
 }

@@ -1,7 +1,7 @@
 #' Production
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO Production
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,8 +10,8 @@
 #' \dontrun{x <- Production(gdx)}
 #' @export
 
-production <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QSX0"))
+production <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QSX0"), ...)
 
   df <- levelSum(df = df, dim_name = "long_name")
 

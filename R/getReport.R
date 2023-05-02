@@ -6,6 +6,7 @@
 #' @param export if RDS file should be written. Defaults to TRUE
 #' @param base_year Base year on which relative index can be calculated.
 #' Default 2005.
+#' @param sp_mapping Which mapping to use. See mapping file in DOORMAT package.
 #'
 #' @return Full data output
 #'
@@ -20,7 +21,8 @@
 getReport <- function(gdx,
                       prep_flag = NULL,
                       export = TRUE,
-                      base_year = NULL) {
+                      base_year = NULL,
+                      sp_mapping = "Standard-IMPACT_dis1") {
 
   if (is.null(prep_flag)) {
     cat("\nGrabbing user name\n")
@@ -55,32 +57,32 @@ getReport <- function(gdx,
     return(rbindlist(dummy))
     }
 
-  func_name <- c("reportPopulation(gdx)",
-                 "reportHouseholdPopulation(gdx)",
-                 "reportGDP(gdx)",
-                 "reportHouseholdIncome(gdx)",
-                 "reportPerCapGDP(gdx)",
-                 "reportAnimals(gdx)",
-                 "reportExport(gdx)",
-                 "reportImport(gdx)",
-                 "reportNetTrade(gdx)",
-                 "reportFoodAvailability(gdx)",
-                 "reportCropArea(gdx)",
-                 "reportBiofuelFeedstock(gdx)",
-                 "reportLSFDemand(gdx)",
-                 "reportDemand(gdx)",
-                 "reportHouseholdDemand(gdx)",
-                 "reportIntermediateDemand(gdx)",
-                 "reportOtherDemand(gdx)",
-                 "reportSupply(gdx)",
-                 "reportProduction(gdx)",
-                 "reportYields(gdx)",
-                 "reportConsumerPrices(gdx)",
-                 "reportProducerPrices(gdx)",
-                 "reportWeightedWorldPrices(gdx)",
-                 "reportSingleWorldPrices(gdx)",
-                 "reportHungerRisk(gdx)",
-                 "reportMalnourished(gdx)"
+  func_name <- c("reportPopulation(gdx, sp_mapping = sp_mapping)",
+                 "reportHouseholdPopulation(gdx, sp_mapping = sp_mapping)",
+                 "reportGDP(gdx, sp_mapping = sp_mapping)",
+                 "reportHouseholdIncome(gdx, sp_mapping = sp_mapping)",
+                 "reportPerCapGDP(gdx, sp_mapping = sp_mapping)",
+                 "reportAnimals(gdx, sp_mapping = sp_mapping)",
+                 "reportExport(gdx, sp_mapping = sp_mapping)",
+                 "reportImport(gdx, sp_mapping = sp_mapping)",
+                 "reportNetTrade(gdx, sp_mapping = sp_mapping)",
+                 "reportFoodAvailability(gdx, sp_mapping = sp_mapping)",
+                 "reportCropArea(gdx, sp_mapping = sp_mapping)",
+                 "reportBiofuelFeedstock(gdx, sp_mapping = sp_mapping)",
+                 "reportLSFDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportHouseholdDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportIntermediateDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportOtherDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportSupply(gdx, sp_mapping = sp_mapping)",
+                 "reportProduction(gdx, sp_mapping = sp_mapping)",
+                 "reportYields(gdx, sp_mapping = sp_mapping)",
+                 "reportConsumerPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportProducerPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportWeightedWorldPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportSingleWorldPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportHungerRisk(gdx, sp_mapping = sp_mapping)",
+                 "reportMalnourished(gdx, sp_mapping = sp_mapping)"
                  )
 
   out <- NULL

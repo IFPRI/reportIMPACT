@@ -1,7 +1,7 @@
 #' biofuelFeedstock
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO biofuelFeedstock
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,7 +10,7 @@
 #' \dontrun{x <- biofuelFeedstock(gdx)}
 #' @export
 
-biofuelFeedstock <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QBFX0"))
+biofuelFeedstock <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "QBFX0"), ...)
   return(df)
 }

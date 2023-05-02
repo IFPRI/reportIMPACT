@@ -4,10 +4,12 @@
 \alias{reportExport}
 \title{reportExport}
 \usage{
-reportExport(gdx)
+reportExport(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO export

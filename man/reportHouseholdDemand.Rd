@@ -4,10 +4,12 @@
 \alias{reportHouseholdDemand}
 \title{reportHouseholdDemand}
 \usage{
-reportHouseholdDemand(gdx)
+reportHouseholdDemand(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO population

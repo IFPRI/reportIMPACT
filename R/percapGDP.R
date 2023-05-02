@@ -1,7 +1,7 @@
 #' percapGDP
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO percapGDP
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,9 +10,9 @@
 #' \dontrun{x <- percapGDP(gdx)}
 #' @export
 
-percapGDP <- function(gdx) {
-  gdp <- GDP(gdx)
-  pop <- population(gdx)
+percapGDP <- function(gdx, ...) {
+  gdp <- GDP(gdx, ...)
+  pop <- population(gdx, ...)
 
   gdp_pc <- setNames(
     collapseNames(as.magpie(gdp, spatial = "region"))

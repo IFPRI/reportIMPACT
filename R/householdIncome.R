@@ -1,7 +1,7 @@
 #' householdIncome
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO householdIncome
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,7 +10,7 @@
 #' \dontrun{x <- householdIncome(gdx)}
 #' @export
 
-householdIncome <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "GDPHX0"))
+householdIncome <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "GDPHX0"), ...)
   return(df)
 }

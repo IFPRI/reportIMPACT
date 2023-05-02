@@ -1,7 +1,7 @@
 #' Population
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO population
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -10,7 +10,7 @@
 #' \dontrun{x <- population(gdx)}
 #' @export
 
-population <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "POPX0"))
+population <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "POPX0"), ...)
   return(df)
 }

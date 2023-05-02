@@ -4,10 +4,12 @@
 \alias{producerPrices}
 \title{Producer Prices}
 \usage{
-producerPrices(gdx)
+producerPrices(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO producerPrices

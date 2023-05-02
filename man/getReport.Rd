@@ -4,7 +4,13 @@
 \alias{getReport}
 \title{getReport}
 \usage{
-getReport(gdx, prep_flag = NULL, export = TRUE, base_year = NULL)
+getReport(
+  gdx,
+  prep_flag = NULL,
+  export = TRUE,
+  base_year = NULL,
+  sp_mapping = "Standard-IMPACT_dis1"
+)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
@@ -16,6 +22,8 @@ Defaults to user name from the computer where this script is run.}
 
 \item{base_year}{Base year on which relative index can be calculated.
 Default 2005.}
+
+\item{sp_mapping}{Which mapping to use. See mapping file in DOORMAT package.}
 }
 \value{
 Full data output

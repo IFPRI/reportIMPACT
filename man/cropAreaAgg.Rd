@@ -4,10 +4,12 @@
 \alias{cropAreaAgg}
 \title{cropAreaAgg}
 \usage{
-cropAreaAgg(gdx)
+cropAreaAgg(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{...}{Arguments to aggregateIMPACT call. See ?aggregateIMPACT}
 }
 \value{
 GLO cropAreaAgg

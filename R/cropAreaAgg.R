@@ -1,7 +1,7 @@
 #' cropAreaAgg
 #'
 #' @param gdx final GDX from an IMPACT run
-#'
+#' @param ... Arguments to aggregateIMPACT call. See ?aggregateIMPACT
 #' @return GLO cropAreaAgg
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
@@ -13,8 +13,8 @@
 #' \dontrun{x <- cropAreaAgg(gdx)}
 #' @export
 
-cropAreaAgg <- function(gdx) {
-  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0"))
+cropAreaAgg <- function(gdx, ...) {
+  df <- aggregateIMPACT(df = readGDX(gdx = gdx, name = "AREACTYX0"), ...)
 
   fpath <- system.file("extdata", file = "mapping_items.xlsx",
                        package = "DOORMAT")
