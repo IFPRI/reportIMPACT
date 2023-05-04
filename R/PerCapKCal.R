@@ -5,14 +5,14 @@
 #' @return Per capita KCal availability
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
-#' @importFrom magclass as.magpie getItems as.data.frame setYears
+#' @importFrom magclass as.magpie getItems as.data.frame setYears getYears
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- PerCapKCal(gdx)}
 #' @export
 
-PerCapKCal <- function(gdx){
-  setYears <- NULL
+PerCapKCal <- function(gdx, ...){
+  setYears <- getYears <- NULL
 
   tot_cal_cap <- collapseNames(
     as.magpie(readGDX(gdx = gdx, name = "TotalCalorie")$data))
@@ -38,7 +38,7 @@ PerCapKCal <- function(gdx){
   df_list$data <- df
   df_list$domains <- "cty"
 
-  df_aggregated <- as.magpie(aggregateIMPACT(df = df_list))
+  df_aggregated <- as.magpie(aggregateIMPACT(df = df_list, ...))
   pop_agg <- as.magpie(population(gdx))
 
   out <- df_aggregated / pop_agg[,getYears(df_aggregated),]

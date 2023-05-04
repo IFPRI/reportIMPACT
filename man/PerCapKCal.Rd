@@ -4,7 +4,7 @@
 \alias{PerCapKCal}
 \title{KCal per Capita}
 \usage{
-PerCapKCal(gdx)
+PerCapKCal(gdx, ...)
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
