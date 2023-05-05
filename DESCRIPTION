@@ -14,12 +14,12 @@ Imports:
     data.table (>= 1.14.8),
     magclass (>= 6.9.0),
     dplyr (>= 1.1.2),
-    DOORMAT (>= 3.6.0),
+    DOORMAT (>= 3.7.0),
     forcats (>= 1.0.0),
     readxl (>= 1.4.2)
 Remotes:
     github::IFPRI/DOORMAT,
     github::pik-piam/magclass
 Suggests:
-    reportIMPACT (>= 4.2.0)
+    reportIMPACT (>= 4.3.0)
 Additional_repositories: https://ifpri.github.io/drat
