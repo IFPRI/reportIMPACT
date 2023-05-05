@@ -83,7 +83,9 @@ getReport <- function(gdx,
                  "reportSingleWorldPrices(gdx, sp_mapping = sp_mapping)",
                  "reportHungerRisk(gdx, sp_mapping = sp_mapping)",
                  "reportMalnourished(gdx, sp_mapping = sp_mapping)",
-                 "reportPerCapKCal(gdx, sp_mapping = sp_mapping)"
+                 "reportPerCapKCal(gdx, sp_mapping = sp_mapping)",
+                 "reportDomesticExportPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportDomesticImportPrices(gdx, sp_mapping = sp_mapping)"
                  )
 
   out <- NULL
