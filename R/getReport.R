@@ -85,7 +85,8 @@ getReport <- function(gdx,
                  "reportMalnourished(gdx, sp_mapping = sp_mapping)",
                  "reportPerCapKCal(gdx, sp_mapping = sp_mapping)",
                  "reportDomesticExportPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportDomesticImportPrices(gdx, sp_mapping = sp_mapping)"
+                 "reportDomesticImportPrices(gdx, sp_mapping = sp_mapping)",
+                 "reportExportShareProduction(gdx, sp_mapping = sp_mapping)"
                  )
 
   out <- NULL
