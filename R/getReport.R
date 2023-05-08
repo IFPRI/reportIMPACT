@@ -87,7 +87,9 @@ getReport <- function(gdx,
                  "reportDomesticExportPrices(gdx, sp_mapping = sp_mapping)",
                  "reportDomesticImportPrices(gdx, sp_mapping = sp_mapping)",
                  "reportExportShareProduction(gdx, sp_mapping = sp_mapping)",
-                 "reportImportShareDemand(gdx, sp_mapping = sp_mapping)"
+                 "reportImportShareDemand(gdx, sp_mapping = sp_mapping)",
+                 "reportNetTradeShareProduction(gdx, sp_mapping = sp_mapping)",
+                 "reportNetTradeShareDemand(gdx, sp_mapping = sp_mapping)"
                  )
 
   out <- NULL
