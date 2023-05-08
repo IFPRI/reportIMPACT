@@ -6,6 +6,7 @@
 \usage{
 getReport(
   gdx,
+  additional_indicators = FALSE,
   prep_flag = NULL,
   export = TRUE,
   base_year = NULL,
@@ -14,6 +15,8 @@ getReport(
 }
 \arguments{
 \item{gdx}{final GDX from an IMPACT run}
+
+\item{additional_indicators}{If non-core indicators should be read.}
 
 \item{prep_flag}{Who processed data.
 Defaults to user name from the computer where this script is run.}

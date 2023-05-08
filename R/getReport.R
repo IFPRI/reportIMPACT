@@ -1,6 +1,7 @@
 #' getReport
 #'
 #' @param gdx final GDX from an IMPACT run
+#' @param additional_indicators If non-core indicators should be read.
 #' @param prep_flag Who processed data.
 #' Defaults to user name from the computer where this script is run.
 #' @param export if RDS file should be written. Defaults to TRUE
@@ -19,25 +20,30 @@
 #' @export
 
 getReport <- function(gdx,
+                      additional_indicators = FALSE,
                       prep_flag = NULL,
                       export = TRUE,
                       base_year = NULL,
                       sp_mapping = "Standard-IMPACT_dis1") {
 
+  # Create a prep flag - user name usually
   if (is.null(prep_flag)) {
     cat("\nGrabbing user name\n")
     prep_flag <- as.vector(Sys.info()["effective_user"])
   }
 
+  # Pull base year data if not provided
   if (is.null(base_year)) {
     cat("\nGrabbing first year of simulation\n")
     base_year <- as.numeric(as.character(readGDX(gdx = gdx,
                                                  name = "YRT1")[["data"]]$yrs))
   }
 
+  # Message output
   message("Start getReport(gdx)...")
   t <- Sys.time()
 
+  # Pull the basic indicator column names - to standardize output
   cols <- suppressMessages(colnames(reportPopulation(gdx)))
 
   # Custom function for additional calcs ----
@@ -55,45 +61,60 @@ getReport <- function(gdx,
       calcRelative(df = base_list, base_year = base_year,
                    type = "index")
     return(rbindlist(dummy))
-    }
+  }
 
-  func_name <- c("reportPopulation(gdx, sp_mapping = sp_mapping)",
-                 "reportHouseholdPopulation(gdx, sp_mapping = sp_mapping)",
-                 "reportGDP(gdx, sp_mapping = sp_mapping)",
-                 "reportHouseholdIncome(gdx, sp_mapping = sp_mapping)",
-                 "reportPerCapGDP(gdx, sp_mapping = sp_mapping)",
-                 "reportAnimals(gdx, sp_mapping = sp_mapping)",
-                 "reportExport(gdx, sp_mapping = sp_mapping)",
-                 "reportImport(gdx, sp_mapping = sp_mapping)",
-                 "reportNetTrade(gdx, sp_mapping = sp_mapping)",
-                 "reportFoodAvailability(gdx, sp_mapping = sp_mapping)",
-                 "reportCropArea(gdx, sp_mapping = sp_mapping)",
-                 "reportBiofuelFeedstock(gdx, sp_mapping = sp_mapping)",
-                 "reportLSFDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportHouseholdDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportIntermediateDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportOtherDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportSupply(gdx, sp_mapping = sp_mapping)",
-                 "reportProduction(gdx, sp_mapping = sp_mapping)",
-                 "reportYields(gdx, sp_mapping = sp_mapping)",
-                 "reportConsumerPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportProducerPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportWeightedWorldPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportSingleWorldPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportHungerRisk(gdx, sp_mapping = sp_mapping)",
-                 "reportMalnourished(gdx, sp_mapping = sp_mapping)",
-                 "reportPerCapKCal(gdx, sp_mapping = sp_mapping)",
-                 "reportDomesticExportPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportDomesticImportPrices(gdx, sp_mapping = sp_mapping)",
-                 "reportExportShareProduction(gdx, sp_mapping = sp_mapping)",
-                 "reportImportShareDemand(gdx, sp_mapping = sp_mapping)",
-                 "reportNetTradeShareProduction(gdx, sp_mapping = sp_mapping)",
-                 "reportNetTradeShareDemand(gdx, sp_mapping = sp_mapping)"
-                 )
+  # Find R scripts in the package
+  all_files <- list.files(path = "./R")
 
+  # Find R scripts which start with "report"
+  all_reports <-
+    gsub(pattern = ".R",
+         replacement = "",
+         x = all_files[startsWith(x = all_files,prefix = "report")])
+
+  # Declare "core" functions
+  core_func <- c("reportPopulation",
+                 "reportGDP",
+                 "reportPerCapGDP",
+                 "reportAnimals",
+                 "reportExport",
+                 "reportImport",
+                 "reportNetTrade",
+                 "reportCropArea",
+                 "reportBiofuelFeedstock",
+                 "reportLSFDemand",
+                 "reportDemand",
+                 "reportIntermediateDemand",
+                 "reportOtherDemand",
+                 "reportSupply",
+                 "reportProduction",
+                 "reportYields",
+                 "reportConsumerPrices",
+                 "reportProducerPrices",
+                 "reportWeightedWorldPrices",
+                 "reportSingleWorldPrices")
+
+  # Decalre a NULL object to add on top of core functions
+  extra_calls <- NULL
+
+  # If additional indicators requested - find which indicators are not added
+  if (additional_indicators){
+    extra_calls <- setdiff(all_reports, core_func)
+  }
+
+  # Declare which reporting calls to run
+  func_name <- c(core_func, extra_calls)
+
+  # Provide additional arguments <- TBD to make it function specific
+  arg_call <- "(gdx, sp_mapping = sp_mapping)"
+
+  # Decalre final function calls
+  func_name_args <- paste0(func_name, arg_call)
+
+
+  # Create relative Indicators
   out <- NULL
-  for (func in func_name){
+  for (func in func_name_args){
     display <- gsub(pattern = "report|\\(gdx\\)", replacement = "", x = func)
     display <- gsub("([a-z])([A-Z])", "\\1 \\2", display)
     message(paste("Reading", display, "....."))
@@ -105,17 +126,21 @@ getReport <- function(gdx,
     out <- rbind(out, temp)
   }
 
+  # Unit 2 as "real" unit if it doesnt exist
   out$unit2[is.na(out$unit2)] <- out$unit[is.na(out$unit2)]
 
   # Add flag to identify
   out$prep_flag <- prep_flag
 
+  # Factorize regions
   out$region <- as.factor(out$region)
 
+  # Move "GLO" to last level
   if ("GLO" %in% levels(out$region)) {
     out$region <- forcats::fct_relevel(out$region, "GLO", after = Inf)
     }
 
+  # Write to disk if needed (by default it is TRUE)
   if (export) {
     export_dir <- paste0(dirname(gdx), "/", gsub(pattern = ".gdx",
                                                  replacement = "",
@@ -124,7 +149,9 @@ getReport <- function(gdx,
     message("\nResults exported to ", export_dir)
   } else {
     return(out)
-    }
+  }
+
+  # Throw end message
   message("\nFinished post processing in ",
           round(difftime(Sys.time(), t, units = "sec"), 1), " seconds")
 }
