@@ -1,6 +1,6 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
-Version: 4.9.0
+Version: 4.10.0
 Authors@R: c(
     person("Abhijeet", "Mishra", , "A.Mishra@cgiar.org", role = c("aut", "cre"))
     )
@@ -14,12 +14,12 @@ Imports:
     data.table (>= 1.14.8),
     magclass (>= 6.9.0),
     dplyr (>= 1.1.2),
-    DOORMAT (>= 3.7.0),
+    DOORMAT (>= 3.7.4),
     forcats (>= 1.0.0),
     readxl (>= 1.4.2)
 Remotes:
     github::IFPRI/DOORMAT,
     github::pik-piam/magclass
 Suggests:
-    reportIMPACT (>= 4.8.0)
+    reportIMPACT (>= 4.9.0)
 Additional_repositories: https://ifpri.github.io/drat
