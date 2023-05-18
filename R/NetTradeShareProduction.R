@@ -16,18 +16,20 @@ NetTradeShareProduction <- function(gdx, ...) {
   qdx0 <- collapseNames(as.magpie(readGDX(gdx = gdx, name = "qdx0")$data))
   qsupx0 <- collapseNames(as.magpie(readGDX(gdx = gdx, name = "QSUPX0")$data))
 
-  QDXVal <- pwx0 * qdx0[,,getItems(pwx0)$c]
-  QSXVal <- pwx0 * qsupx0[,,getItems(pwx0)$c]
+  QDXVal <- pwx0 * qdx0[, , getItems(pwx0)$c]
+  QSXVal <- pwx0 * qsupx0[, , getItems(pwx0)$c]
 
   QNXVal <- QSXVal - QDXVal
 
   QNXVal[is.na(QNXVal)] <- 0
   QSXVal[is.na(QSXVal)] <- 0
 
-  mag_to_df <- function(mag_obj, domains, ...){
+  mag_to_df <- function(mag_obj, domains, ...) {
     dummy <- as.data.frame(mag_obj)[-1]
     colnames(dummy) <- c(getSets(mag_obj), "value")
-    colnames(dummy) <- gsub(pattern = "region", replacement = "cty",x = colnames(dummy))
+    colnames(dummy) <- gsub(pattern = "region",
+                            replacement = "cty",
+                            x = colnames(dummy))
     pass_list <- list()
     pass_list[["data"]] <- dummy
     pass_list[["domains"]] <- domains
@@ -37,8 +39,8 @@ NetTradeShareProduction <- function(gdx, ...) {
     return(dummy_aggregate)
   }
 
-  qnx_mag <- as.magpie(mag_to_df(mag_obj = QNXVal,domains = c("c","cty")))
-  qsx_mag <- as.magpie(mag_to_df(mag_obj = QSXVal,domains = c("c","cty")))
+  qnx_mag <- as.magpie(mag_to_df(mag_obj = QNXVal, domains = c("c", "cty")))
+  qsx_mag <- as.magpie(mag_to_df(mag_obj = QSXVal, domains = c("c", "cty")))
 
   QNSH1 <- qnx_mag / qsx_mag
 

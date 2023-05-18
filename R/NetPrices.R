@@ -22,7 +22,7 @@ NetPrices <- function(gdx, ...) {
   # so okay to keep unit as 2005 USD per mt here
   value <-
     prices[getRegions(quantity), , ] *
-    collapseNames(quantity[,,getItems(prices, dim = "j")])
+    collapseNames(quantity[, , getItems(prices, dim = "j")])
 
   value[is.na(value)] <- 0
 
@@ -47,7 +47,7 @@ NetPrices <- function(gdx, ...) {
   common_elements <-
     intersect(getNames(collapseNames(value_mag)), getNames(quantity_mag))
 
-  price_aggregate <- value_mag/quantity_mag[,,common_elements]
+  price_aggregate <- value_mag / quantity_mag[, , common_elements]
 
   df <- as.data.frame(price_aggregate)[-1]
 

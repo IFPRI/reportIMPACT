@@ -68,9 +68,9 @@ getReport <- function(gdx,
 
   # Find R scripts which start with "report"
   all_reports <-
-    gsub(pattern = ".R",
+    gsub(pattern = "\\.R",
          replacement = "",
-         x = all_files[startsWith(x = all_files,prefix = "report")])
+         x = all_files[startsWith(x = all_files, prefix = "report")])
 
   # Declare "core" functions
   core_func <- c("reportPopulation",
@@ -98,7 +98,7 @@ getReport <- function(gdx,
   extra_calls <- NULL
 
   # If additional indicators requested - find which indicators are not added
-  if (additional_indicators){
+  if (additional_indicators) {
     extra_calls <- setdiff(all_reports, core_func)
   }
 
@@ -108,23 +108,20 @@ getReport <- function(gdx,
   # Provide additional arguments <- TBD to make it function specific
   arg_call <- "(gdx, sp_mapping = sp_mapping)"
 
-  # Decalre final function calls
+  # Declare final function calls
   func_name_args <- paste0(func_name, arg_call)
 
 
   # Create relative Indicators
-  out <- NULL
-  for (func in func_name_args){
-    display <- gsub(pattern = "report|\\(gdx\\)", replacement = "", x = func)
-    display <- gsub("([a-z])([A-Z])", "\\1 \\2", display)
-    message(paste("Reading", display, "....."))
+  out <- do.call(rbind, lapply(func_name_args, function(func) {
+    display <- gsub(pattern = arg_call, replacement = "", x = func)
+    message(paste("Calling", display, "....."))
     temp <- eval(parse(text = func))[, cols]
     temp$unit2 <- temp$unit
     relative_indicators <- additional_calculation(base_list = temp,
                                                   base_year = base_year)
-    temp <- rbind(temp, relative_indicators)
-    out <- rbind(out, temp)
-  }
+    rbind(temp, relative_indicators)
+  }))
 
   # Unit 2 as "real" unit if it doesnt exist
   out$unit2[is.na(out$unit2)] <- out$unit[is.na(out$unit2)]

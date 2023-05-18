@@ -29,5 +29,9 @@ clean_description <- function(df) {
 
   df <- clean_unit(df)
 
+  # Add Model if does not exists
+
+  if (!"model" %in% colnames(df)) df$model <- "IMPACT"
+
   return(df)
 }

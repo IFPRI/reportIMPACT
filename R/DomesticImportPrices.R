@@ -22,7 +22,7 @@ DomesticImportPrices <- function(gdx, ...) {
   # so okay to keep unit as 2005 USD per mt here
   value <-
     prices[getRegions(demand), , ] *
-    collapseNames(demand[,,getItems(prices, dim = "c")])
+    collapseNames(demand[, , getItems(prices, dim = "c")])
 
   value[is.na(value)] <- 0
 
@@ -46,7 +46,7 @@ DomesticImportPrices <- function(gdx, ...) {
   common_elements <-
     intersect(getNames(collapseNames(value_mag)), getNames(demand_mag))
 
-  price_aggregate <- value_mag/demand_mag[,,common_elements]
+  price_aggregate <- value_mag / demand_mag[, , common_elements]
 
   df <- as.data.frame(price_aggregate)[-1]
 

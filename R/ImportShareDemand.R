@@ -17,17 +17,17 @@ ImportShareDemand <- function(gdx, ...) {
   qdx0 <- collapseNames(as.magpie(readGDX(gdx = gdx, name = "QDX0")$data))
 
   QMXVal <- pwx0 * qmx0
-  QDXVal <- pwx0 * qdx0[,,getItems(pwx0)$c]
+  QDXVal <- pwx0 * qdx0[, , getItems(pwx0)$c]
 
 
   QMXVal[is.na(QMXVal)] <- 0
   QDXVal[is.na(QDXVal)] <- 0
 
-  mag_to_df <- function(mag_obj, domains, ...){
+  mag_to_df <- function(mag_obj, domains, ...) {
     dummy <- as.data.frame(mag_obj)[-1]
     colnames(dummy) <- c(getSets(mag_obj), "value")
     colnames(dummy) <-
-      gsub(pattern = "region", replacement = "cty",x = colnames(dummy))
+      gsub(pattern = "region", replacement = "cty", x = colnames(dummy))
     pass_list <- list()
     pass_list[["data"]] <- dummy
     pass_list[["domains"]] <- domains
@@ -37,8 +37,8 @@ ImportShareDemand <- function(gdx, ...) {
     return(dummy_aggregate)
   }
 
-  qmx_mag <- as.magpie(mag_to_df(mag_obj = QMXVal,domains = c("c","cty")))
-  qdx_mag <- as.magpie(mag_to_df(mag_obj = QDXVal,domains = c("c","cty")))
+  qmx_mag <- as.magpie(mag_to_df(mag_obj = QMXVal, domains = c("c", "cty")))
+  qdx_mag <- as.magpie(mag_to_df(mag_obj = QDXVal, domains = c("c", "cty")))
 
   QMSH <- qmx_mag / qdx_mag
 
