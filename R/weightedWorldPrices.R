@@ -46,7 +46,7 @@ weightedWorldPrices <- function(gdx, ...) {
   demand_aggregate <- levelSum(df = demand_aggregate, dim_name = "long_name")
 
   value_agg_mag <- as.magpie(value_aggregate)
-  demand_agg_mag <- as.magpie(demand_aggregate)
+  demand_agg_mag <- as.magpie(demand_aggregate, spatial = "region")
 
   magclass::getItems(demand_agg_mag, dim = 3.1) <-
     getItems(value_agg_mag, dim = 3.1)

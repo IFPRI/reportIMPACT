@@ -39,11 +39,13 @@ consumerPrices <- function(gdx, ...) {
   demand_aggregate <- levelSum(df = demand_aggregate, dim_name = "long_name")
 
   price_aggregate <-
-    as.magpie(value_aggregate) / collapseNames(as.magpie(demand_aggregate))
+    as.magpie(value_aggregate, spatial = "region") /
+    collapseNames(as.magpie(demand_aggregate, spatial = "region"))
 
   df <- as.data.frame(price_aggregate)[-1]
 
-  colnames(df) <- c(getSets(as.magpie(value_aggregate)), "value")
+  colnames(df) <- c(getSets(as.magpie(value_aggregate, spatial = "region")),
+                    "value")
   df <- name_cleaner(df = df, fix_only_na = TRUE)
 
   return(df)

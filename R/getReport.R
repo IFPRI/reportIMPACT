@@ -8,6 +8,7 @@
 #' @param base_year Base year on which relative index can be calculated.
 #' Default 2005.
 #' @param sp_mapping Which mapping to use. See mapping file in DOORMAT package.
+#' @param relative_calc If relative calculations should be done
 #'
 #' @return Full data output
 #'
@@ -24,7 +25,8 @@ getReport <- function(gdx,
                       prep_flag = NULL,
                       export = TRUE,
                       base_year = NULL,
-                      sp_mapping = "Standard-IMPACT_dis1") {
+                      sp_mapping = "Standard-IMPACT_dis1",
+                      relative_calc = FALSE) {
 
   # Create a prep flag - user name usually
   if (is.null(prep_flag)) {
@@ -118,9 +120,11 @@ getReport <- function(gdx,
     message(paste("Calling", display, "....."))
     temp <- eval(parse(text = func))[, cols]
     temp$unit2 <- temp$unit
-    relative_indicators <- additional_calculation(base_list = temp,
-                                                  base_year = base_year)
-    rbind(temp, relative_indicators)
+    if (relative_calc) {
+      relative_indicators <- additional_calculation(base_list = temp,
+                                                    base_year = base_year)
+      rbind(temp, relative_indicators)
+    }
   }))
 
   # Unit 2 as "real" unit if it doesnt exist

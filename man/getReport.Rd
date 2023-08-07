@@ -10,7 +10,8 @@ getReport(
   prep_flag = NULL,
   export = TRUE,
   base_year = NULL,
-  sp_mapping = "Standard-IMPACT_dis1"
+  sp_mapping = "Standard-IMPACT_dis1",
+  relative_calc = FALSE
 )
 }
 \arguments{
@@ -27,6 +28,8 @@ Defaults to user name from the computer where this script is run.}
 Default 2005.}
 
 \item{sp_mapping}{Which mapping to use. See mapping file in DOORMAT package.}
+
+\item{relative_calc}{If relative calculations should be done}
 }
 \value{
 Full data output
