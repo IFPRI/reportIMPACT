@@ -32,8 +32,10 @@ PerCapKCalCommodity <- function(gdx, ...) {
   df_list$data <- df
   df_list$domains <- c("c", "cty")
 
-  df_aggregated <- as.magpie(aggregateIMPACT(df = df_list, ...))
-  pop_agg <- as.magpie(population(gdx))
+  df_aggregated <- as.magpie(aggregateIMPACT(df = df_list, ...),
+                             spatial = "region")
+  pop_agg <- as.magpie(aggregateIMPACT(readGDX(gdx = gdx, name = "POPX0"), ...),
+                       spatial = "region")
   out <- collapseNames(df_aggregated / pop_agg[, getYears(df_aggregated), ])
 
   df <- as.data.frame(out)[, -1]
