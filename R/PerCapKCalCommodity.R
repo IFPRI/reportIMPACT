@@ -32,7 +32,8 @@ PerCapKCalCommodity <- function(gdx, ...) {
   df_list$data <- df
   df_list$domains <- c("c", "cty")
 
-  df_aggregated <- as.magpie(aggregateIMPACT(df = df_list, ...),
+  df_aggregated <- as.magpie(levelSum(df = aggregateIMPACT(df = df_list, ...),
+                                      dim_name = "long_name"),
                              spatial = "region")
   pop_agg <- as.magpie(aggregateIMPACT(readGDX(gdx = gdx, name = "POPX0"), ...),
                        spatial = "region")
