@@ -43,7 +43,7 @@ PerCapKCalCommodity <- function(gdx, ...) {
   colnames(df) <- c(getSets(out), "value")
 
   df <- df[, colnames(aggregateIMPACT(df = df_list))]
-  df$description <- "Commodity wise per capita Kcal (Kcal/cap)"
+  df$description <- "Commodity wise per capita Kcal (Kcal/cap/day)"
 
   return(df)
 }
