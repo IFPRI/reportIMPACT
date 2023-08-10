@@ -13,15 +13,25 @@
 
 PerCapKCalCommodity <- function(gdx, ...) {
   getYears <- NULL
+  "getItems<-" <- NULL
 
   PerCapKCal_Com <- collapseNames(
     as.magpie(readGDX(gdx = gdx, name = "PerCapKCal_Com")$data))
 
-  population <-
-    collapseNames(as.magpie(readGDX(gdx = gdx, name = "POPX0")$data))
-
   valid_regs <- getItems(PerCapKCal_Com, dim = 1)
   valid_yrs  <- getItems(PerCapKCal_Com, dim = 2)
+
+  # Add "Other KCal"
+  otherKcal <- collapseNames(
+    as.magpie(readGDX(gdx = gdx, name = "OtherCalorie")$data))
+  getItems(otherKcal, dim = 3) <- "OTHER_KCAL"
+
+  # MBIND
+  PerCapKCal_Com <- mbind(PerCapKCal_Com,
+                          otherKcal[valid_regs, , ])
+
+  population <-
+    collapseNames(as.magpie(readGDX(gdx = gdx, name = "POPX0")$data))
 
   PerCapKCal_Com_total <- PerCapKCal_Com * population[valid_regs, valid_yrs, ]
 

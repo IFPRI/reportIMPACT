@@ -20,6 +20,14 @@
 levelSum <- function(df, dim_name = NULL, spatial = "region", temporal = "yrs",
                      na.rm = TRUE, bind = TRUE) {
 
+  if ("groups" %in% colnames(df))
+    df$groups[is.na(df$groups)] <- "G_OTHER"
+
+  if ("long_name" %in% colnames(df))
+    df$long_name[is.na(df$long_name)] <- "LN_OTHER"
+
+  df <- df[!is.na(df$yrs), ]
+
   df_mag <- as.magpie(df, spatial = spatial, temporal = temporal)
 
   dim_to_sum <- as.numeric(gsub(pattern = "d",
