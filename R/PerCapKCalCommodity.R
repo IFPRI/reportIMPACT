@@ -5,7 +5,7 @@
 #' @return Per capita KCal availability
 #'
 #' @importFrom DOORMAT readGDX aggregateIMPACT
-#' @importFrom magclass as.magpie getItems as.data.frame getYears
+#' @importFrom magclass as.magpie getItems as.data.frame getYears setNames
 #' @author Abhijeet Mishra
 #' @examples
 #' \dontrun{x <- PerCapKCalCommodity(gdx)}
@@ -13,7 +13,6 @@
 
 PerCapKCalCommodity <- function(gdx, ...) {
   getYears <- NULL
-  "getItems<-" <- NULL
 
   PerCapKCal_Com <- collapseNames(
     as.magpie(readGDX(gdx = gdx, name = "PerCapKCal_Com")$data))
@@ -22,9 +21,8 @@ PerCapKCalCommodity <- function(gdx, ...) {
   valid_yrs  <- getItems(PerCapKCal_Com, dim = 2)
 
   # Add "Other KCal"
-  otherKcal <- collapseNames(
-    as.magpie(readGDX(gdx = gdx, name = "OtherCalorie")$data))
-  getItems(otherKcal, dim = 3) <- "OTHER_KCAL"
+  otherKcal <- setNames(collapseNames(
+    as.magpie(readGDX(gdx = gdx, name = "OtherCalorie")$data)), "OTHER_KCAL")
 
   # MBIND
   PerCapKCal_Com <- mbind(PerCapKCal_Com,
