@@ -16,7 +16,7 @@ singleWorldPrices <- function(gdx, ...) {
   df <- readGDX(gdx = gdx, name = "PWX0")
   df[["data"]]$cty <- "GLO"
   df[["domains"]] <- c("c", "cty")
-  df <- aggregateIMPACT(df = df)
+  df <- aggregateIMPACT(df = df, ...)
 
   return(df)
 }

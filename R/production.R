@@ -15,7 +15,7 @@ production <- function(gdx, ...) {
 
   df <- levelSum(df = df, dim_name = "long_name")
 
-  df_mag <- as.magpie(df)
+  df_mag <- as.magpie(df, spatial = "region")
   trade_sets <- grep(pattern = "raded", x = getNames(df_mag), value = TRUE)
   traded_agg <- df_mag[, , trade_sets]
   traded_agg <- add_dimension(

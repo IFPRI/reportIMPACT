@@ -9,6 +9,7 @@
 #' passed on to "df" argument
 #'
 #' @importFrom magclass as.magpie getSets mbind
+#' @importFrom rlang is_empty
 #'
 #' @return Aggregated dataframe
 #'
@@ -20,11 +21,15 @@
 levelSum <- function(df, dim_name = NULL, spatial = "region", temporal = "yrs",
                      na.rm = TRUE, bind = TRUE) {
 
-  if ("groups" %in% colnames(df))
+  if ("groups" %in% colnames(df) &&
+      !is_empty(df$groups[is.na(df$groups)])) {
     df$groups[is.na(df$groups)] <- "G_OTHER"
+  }
 
-  if ("long_name" %in% colnames(df))
+  if ("long_name" %in% colnames(df) &&
+      !is_empty(df$long_name[is.na(df$long_name)])) {
     df$long_name[is.na(df$long_name)] <- "LN_OTHER"
+  }
 
   df <- df[!is.na(df$yrs), ]
 
