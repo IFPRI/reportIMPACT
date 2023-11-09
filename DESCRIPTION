@@ -1,6 +1,6 @@
 Package: reportIMPACT
 Title: IMPACT outputs R package for IMPACT version 3.x
-Version: 4.16.1
+Version: 4.16.2
 Authors@R: c(
     person("Abhijeet", "Mishra", , "A.Mishra@cgiar.org", role = c("aut", "cre"))
     )
