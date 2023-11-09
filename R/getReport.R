@@ -114,18 +114,18 @@ getReport <- function(gdx,
   func_name_args <- paste0(func_name, arg_call)
 
 
-  # Create relative Indicators
-  out <- do.call(rbind, lapply(func_name_args, function(func) {
-    display <- gsub(pattern = arg_call, replacement = "", x = func)
-    message(paste("Calling", display, "....."))
-    temp <- eval(parse(text = func))[, cols]
+  out <- NULL
+  for (i in func_name_args) {
+    message(gsub(pattern = arg_call, x = i, replacement = ""))
+    temp <- eval(parse(text = i))[, cols]
     temp$unit2 <- temp$unit
     if (relative_calc) {
       relative_indicators <- additional_calculation(base_list = temp,
                                                     base_year = base_year)
-      rbind(temp, relative_indicators)
+      temp <- rbind(temp, relative_indicators)
     }
-  }))
+    out <- rbind(out, temp)
+  }
 
   # Unit 2 as "real" unit if it doesnt exist
   out$unit2[is.na(out$unit2)] <- out$unit[is.na(out$unit2)]
