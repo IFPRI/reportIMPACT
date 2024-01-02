@@ -24,6 +24,12 @@ PerCapKCalCommodity <- function(gdx, ...) {
   otherKcal <- setNames(collapseNames(
     as.magpie(readGDX(gdx = gdx, name = "OtherCalorie")$data)), "OTHER_KCAL")
 
+  # Find if "other cal" reports all regions which exist in percap kcal com
+  diff <- setdiff(valid_regs, getItems(otherKcal, dim = 1))
+  if (length(diff) > 0) {
+    otherKcal <- add_columns(x = otherKcal, dim = 1, addnm = diff, fill = 0)
+  }
+
   # MBIND
   PerCapKCal_Com <- mbind(PerCapKCal_Com,
                           otherKcal[valid_regs, , ])
